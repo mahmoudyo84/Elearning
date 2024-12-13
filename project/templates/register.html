@@ -3,15 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E-Learning Platform - Login</title>
     {% load static %}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/login.css' %}"
-    />
-
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="{% static 'css/registration.css'%}" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Document</title>
   </head>
   <body>
     <section class="main-container">
@@ -53,21 +48,53 @@
             <div class="input-container">
               <input
                 class="inputs"
+                placeholder="Enter your fullname"
+                name="Fullname"
+                type="text"
+              />
+            </div>
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Enter your Email"
+                name="Email"
+                type="text"
+              />
+            </div>
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Enter your phone number"
+                name="phone"
+                type="text"
+              />
+            </div>
+            <div class="input-container">
+              <input
+                class="inputs"
                 placeholder="Enter your password"
                 name="Password"
                 type="text"
               />
             </div>
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Confirm your password"
+                name="ConfirmPassword"
+                type="text"
+              />
+            </div>
             <div class="input-container sign-container">
-              <a class="sign-up-btn" href="{% url 'register' %}"
-                >Create a new account</a
+              <a class="sign-up-btn" href="{% url 'login' %}"
+                >Already have an account ? <strong>Click Here</strong></a
               >
-              <button class="sign-in-btn">sign in</button>
+              <button class="sign-in-btn">sign up</button>
             </div>
           </form>
         </div>
       </div>
     </section>
-    <script src="login.js"></script>
+    <script type="module" src="Registration.js"></script>
   </body>
 </html>
