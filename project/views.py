@@ -8,7 +8,12 @@ def dashboard(request):
     custom_user = request.user.custom_user
     return render(request, 'dashboard.html', {'custom_user': custom_user})
 
-def index(request):
-    return render(request, 'index.html')
+
 def login(request):
     return render(request, 'login.html')
+
+
+def register(request):
+    return render(request, 'register.html')
+
+
