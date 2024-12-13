@@ -1,0 +1,28 @@
+/* Custom styles for index page */
+.hero {
+    background-image: url('https://via.placeholder.com/1920x500'); /* Replace with actual image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+footer {
+    background-color: #f8f9fa;
+}
+
+footer p {
+    margin: 0;
+    color: #6c757d;
+}
+
+/* Optional: Custom button styles */
+.btn-lg {
+    padding: 15px 25px;
+    font-size: 18px;
+}
