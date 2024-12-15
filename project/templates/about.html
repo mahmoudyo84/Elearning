@@ -16,10 +16,10 @@
       </div>
       <nav class="nav-container">
         <ul class="list-wrapper">
-          <li><a class="nav-link" href="../Home/e-learning.html">HOME</a></li>
-          <li><a class="nav-link" href="./about.html">ABOUT</a></li>
+          <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
+          <li><a class="nav-link" href="{% url 'about'  %}">ABOUT</a></li>
           <li>
-            <a class="nav-link" href="../courses/courses.html">COURSES</a>
+            <a class="nav-link" href="{% url 'courses'%}">COURSES</a>
           </li>
           <li>
             <a class="nav-link" href="../contact/contact.html">CONTACT</a>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/registration.css'%}" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="main-container">
+      <div class="res-headline">
+        <div class="logo-text">
+          <p>BRIGHTMIND</p>
+        </div>
+      </div>
+      <div class="side-panel-design">
+        <div class="logo">
+          <div class="logo-text">
+            <p>BRIGHTMIND</p>
+          </div>
+          <div class="line-vert"></div>
+        </div>
+        <div class="bottom-text">
+          <p>
+            <span class="bottom-headline">With us</span><br />
+            <span class="bottom-para">
+              the learning curve is full of passion</span
+            >
+          </p>
+        </div>
+      </div>
+      <div class="form-wrapper">
+        <div class="form">
+          <div class="form-header">
+            <h2>Login</h2>
+          </div>
+          <form class="form-container">
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Enter your username"
+                name="UserName"
+                type="text"
+              />
+            </div>
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Enter your fullname"
+                name="Fullname"
+                type="text"
+              />
+            </div>
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Enter your Email"
+                name="Email"
+                type="text"
+              />
+            </div>
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Enter your phone number"
+                name="phone"
+                type="text"
+              />
+            </div>
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Enter your password"
+                name="Password"
+                type="text"
+              />
+            </div>
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Confirm your password"
+                name="ConfirmPassword"
+                type="text"
+              />
+            </div>
+            <div class="input-container sign-container">
+              <a class="sign-up-btn" href="{% url 'login' %}"
+                >Already have an account ? <strong>Click Here</strong></a
+              >
+              <button class="sign-in-btn">sign up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="Registration.js"></script>
+  </body>
+</html>

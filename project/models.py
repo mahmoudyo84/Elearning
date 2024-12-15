@@ -39,6 +39,7 @@ class Users(models.Model):
     Password = models.CharField(max_length=255)
     Name = models.CharField(max_length=255)
     Email = models.EmailField(max_length=255)
+    Mobile = models.CharField(max_length=14)
     RegisterDate = models.DateField()
     def save(self, *args, **kwargs):
         # Hash password before saving

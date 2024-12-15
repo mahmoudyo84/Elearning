@@ -12,7 +12,7 @@
     />
 
     <script src="{% static 'js/e-learning.js' %}" defer></script>
-    <link rel="stylesheet" href="e-learning.css" />
+    <link rel="stylesheet" href="{% static 'css/e-learning.css' %}" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BrightMind</title>
@@ -32,11 +32,29 @@
           <li><a class="nav-link" href="CONTACT">CONTACT</a></li>
         </ul>
       </nav>
-      <div class="button-container">
+      <!-- <div class="button-container">
         <a class="login animated-button login-header" href="{% url 'login' %}">
           <span>Login</span>
         </a>
+      </div> -->
+
+      <div class="button-container">
+        {% if user.is_authenticated %}
+          <!-- Show Logout button if the user is logged in -->
+          <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="login animated-button login-header">
+              <span>Logout</span>
+            </button>
+          </form>
+        {% else %}
+          <!-- Show Login button if the user is not logged in -->
+          <a class="login animated-button login-header" href="{% url 'login' %}">
+            <span>Login</span>
+          </a>
+        {% endif %}
       </div>
+
     </header>
     <main class="main">
       <section class="bg-section">
