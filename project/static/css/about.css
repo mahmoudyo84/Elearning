@@ -190,7 +190,7 @@ footer {
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  color: white;
+  color: white !important;
   padding-block: 25px;
   padding-inline: 25px;
 }
