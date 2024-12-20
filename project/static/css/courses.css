@@ -272,10 +272,12 @@ footer {
   width: auto;
   margin: auto;
   gap: 40px;
+  cursor: pointer;
 }
 
 .a p:hover {
   color: #1bc67e;
+  cursor: pointer;
 }
 .control {
   display: flex;

@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     {% load static %}
-    <script src="{% static 'js/courses.js' %}" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/courses.css' %}" />
-    <!-- <link rel="stylesheet" href="./courses.css" /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Preview (1).png' %}">
     <title>BrightMind</title>
   </head>
   <body>
@@ -18,15 +17,11 @@
         <ul class="list-wrapper">
           <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
           <li><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
-
-          <li>
-            <a class="nav-link" href="{% url 'courses' %}">COURSES</a>
-          </li>
-          <li>
-            <a class="nav-link" href="../contact/contact.html">CONTACT</a>
-          </li>
+          <li><a class="nav-link" href="{% url 'courses' %}">COURSES</a></li>
+          <li><a class="nav-link" href="{% url 'quiz' %}">QUIZ</a></li>
         </ul>
       </nav>
+      
       <div class="button-container">
         <a class="login animated-button login-header" href="{% url 'login' %}">
           <span>Login</span>
@@ -76,19 +71,19 @@
           </div>
           <div class="link-footer">
             <div class="a">
-              <p href="#">About Us</p>
-              <p href="#">What We Do</p>
-              <p href="#">FAQ</p>
+              <p>About Us</p>
+              <p>What We Do</p>
+              <p>FAQ</p>
             </div>
             <div class="a">
-              <p href="#">Career</p>
-              <p href="#">Blog</p>
-              <p href="#">Contact Us</p>
+              <p>Career</p>
+              <p>Blog</p>
+              <p>Contact Us</p>
             </div>
             <div class="a">
-              <p href="#">Services</p>
-              <p href="#">Industries</p>
-              <p href="#">Offices</p>
+              <p>Services</p>
+              <p>Industries</p>
+              <p>Offices</p>
             </div>
           </div>
         </div>
@@ -97,6 +92,6 @@
         &copy; Copyright 2024 BrightMind. All rights reserved.
       </div>
     </footer>
-    <script src="./courses.js"></script>
-  </body>
+    <script src="{% static 'js/courses.js' %}" defer></script>
+ </body>
 </html>

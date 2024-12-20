@@ -30,4 +30,5 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('courses/', views.courses_view, name='courses'),
     path('register/', views.register_view, name='register'),
+    path('quiz/', views.quiz_view, name='quiz'),
 ]

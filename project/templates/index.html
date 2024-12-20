@@ -5,16 +5,13 @@
     <meta charset="UTF-8" />
 
     {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       type="text/css"
       href="{% static 'css/index.css' %}"
     />
-
-    <script src="{% static 'js/e-learning.js' %}" defer></script>
-    <link rel="stylesheet" href="{% static 'css/e-learning.css' %}" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Preview (1).png' %}">
     <title>BrightMind</title>
   </head>
   <body>
@@ -26,12 +23,11 @@
         <ul class="list-wrapper">
           <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
           <li><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
-          <li>
-            <a class="nav-link" href="{% url 'courses' %}">COURSES</a>
-          </li>
-          <li><a class="nav-link" href="CONTACT">CONTACT</a></li>
+          <li><a class="nav-link" href="{% url 'courses' %}">COURSES</a></li>
+          <li><a class="nav-link" href="{% url 'quiz' %}">QUIZ</a></li>
         </ul>
       </nav>
+      
       <!-- <div class="button-container">
         <a class="login animated-button login-header" href="{% url 'login' %}">
           <span>Login</span>
@@ -141,21 +137,21 @@
 
           <div class="link-footer">
             <div class="a">
-              <a href="#">About Us</a>
-              <a href="#">What We Do</a>
-              <a href="#">FAQ</a>
+              <p>About Us</p>
+              <p>What We Do</p>
+              <p>FAQ</p>
             </div>
 
             <div class="a">
-              <a href="#">Career</a>
-              <a href="#">Contact Us</a>
-              <a href="#">Blog</a>
+              <p>Career</p>
+              <p>Contact Us</p>
+              <p>Blog</p>
             </div>
 
             <div class="a">
-              <a href="#">Services</a>
-              <a href="#">Industries</a>
-              <a href="#">Offices</a>
+              <p>Services</p>
+              <p>Industries</p>
+              <p>Offices</p>
             </div>
           </div>
         </div>
@@ -164,7 +160,7 @@
         &copy; Copyright 2024 BrightMind. All rights reserved.
       </div>
     </footer>
-
+    <script src="{% static 'js/e-learning.js' %}" defer></script>
     <script
       src="https://kit.fontawesome.com/7031694be7.js"
       crossorigin="anonymous"

@@ -129,6 +129,9 @@ def about_view(request):
 def courses_view(request):
     return render(request,"courses.html")
 
+def quiz_view(request):
+    return render(request,"quiz.html")
+
 
 #Roles_View
 from .services import get_all_roles
