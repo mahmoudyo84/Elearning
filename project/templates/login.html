@@ -5,11 +5,23 @@
     {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Learning Platform - Login</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
-    <link rel="icon" type="image/x-icon" href="{% static 'images/Preview (1).png' %}">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/login.css' %}"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'images/Preview (1).png' %}"
+    />
   </head>
   <body>
     <section class="main-container">
+      <div class="home-btn">
+        <i class="fa-solid fa-house"></i>
+        <a href="{% url 'index' %}">Home</a>
+      </div>
       <div class="res-headline">
         <div class="logo-text">
           <p>BRIGHTMIND</p>
@@ -38,22 +50,23 @@
           </div>
 
           <!-- Add the POST method to send data to the view -->
-          <form class="form-container" method="POST">
-            {% csrf_token %} <!-- CSRF protection token -->
+          <form class="form-container" id="loginForm" method="POST">
+            {% csrf_token %}
+            <!-- CSRF protection token -->
 
             <!-- Username input field -->
             <div class="input-container">
               <input
                 class="inputs"
                 placeholder="Enter your username"
-                name="username" 
+                name="username"
                 type="text"
-                value="{{ request.POST.username }}"/> 
-                
-                <!-- Make sure this matches the field name in the view -->
-                <!-- type ="text"
+                value="{{ request.POST.username }}"
+              />
+
+              <!-- Make sure this matches the field name in the view -->
+              <!-- type ="text"
                 value="{{ request.POST.username }}"  Preserve value after form submission -->
-              
             </div>
 
             <!-- Password input field -->
@@ -61,27 +74,28 @@
               <input
                 class="inputs"
                 placeholder="Enter your password"
-                name="password" 
-                type="password"/> 
-                
-                
-                <!-- Make sure this matches the field name in the view -->
-                <!-- type="password"  Change to "password" to hide the input -->
-              
+                name="password"
+                type="password"
+              />
+
+              <!-- Make sure this matches the field name in the view -->
+              <!-- type="password"  Change to "password" to hide the input -->
             </div>
 
             <!-- Error message display -->
             {% if messages %}
-              <div class="messages">
-                {% for message in messages %}
-                  <p class="error-message">{{ message }}</p>
-                {% endfor %}
-              </div>
+            <div class="messages">
+              {% for message in messages %}
+              <p class="error-message">{{ message }}</p>
+              {% endfor %}
+            </div>
             {% endif %}
 
             <!-- Sign in button -->
             <div class="input-container sign-container">
-              <a class="sign-up-btn" href="{% url 'register' %}">Create a new account</a>
+              <a class="sign-up-btn" href="{% url 'register' %}"
+                >Create a new account</a
+              >
               <button class="sign-in-btn" type="submit">Sign In</button>
             </div>
           </form>
@@ -89,5 +103,9 @@
       </div>
     </section>
     <script src="{% static 'js/login.js' %}" defer></script>
+    <script
+      src="https://kit.fontawesome.com/7031694be7.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

@@ -42,6 +42,15 @@ from django.contrib.auth.hashers import make_password
 
 #     return render(request, 'login.html', {'form': form})
 
+def profile(request):
+    return render(request,'Profile.html')
+
+def enrolled(request):
+    return render(request,'enrollment.html')
+
+def quizes(request):
+    return render(request , 'exams.html')
+
 def register_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -114,6 +123,7 @@ def dashboard(request):
 
 def index(request):
     return render(request, 'index.html',)
+
 
 
 def register(request):

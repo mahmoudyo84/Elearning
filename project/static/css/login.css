@@ -217,6 +217,36 @@ input:focus {
   padding-inline: 8px;
 }
 
+.home-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 25px;
+  background-color: white;
+  padding: 10px 20px;
+  color: #03915b;
+  transition: 0.3s ease-in-out;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+}
+.home-btn a {
+  transition: 0.3s ease-in-out;
+  color: #03915b;
+  text-decoration: none !important;
+}
+
+.home-btn:hover {
+  background-color: #03915b;
+  color: white !important;
+  cursor: pointer;
+}
+.home-btn:hover a {
+  color: white !important;
+}
+
 @media screen and (max-width: 1200px) {
   .logo-text {
     font-size: 32px;

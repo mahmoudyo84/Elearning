@@ -122,7 +122,7 @@ class ExamsQuestions(models.Model):
     ExamID = models.ForeignKey(CoursesExams, on_delete=models.CASCADE)
     Question = models.TextField()
     Point = models.IntegerField()
-
+    
     def __str__(self):
         return self.Question
 
