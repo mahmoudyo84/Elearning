@@ -8,7 +8,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'css/index.css' %}"
+      href="{% static 'css/e-learning.css' %}"
     />
 
     <script src="{% static 'js/e-learning.js' %}" defer></script>
@@ -24,35 +24,38 @@
       </div>
       <nav class="nav-container">
         <ul class="list-wrapper">
+          {% if user.is_authenticated %}
+
           <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
           <li><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
           <li>
             <a class="nav-link" href="{% url 'courses' %}">COURSES</a>
           </li>
           <li><a class="nav-link" href="CONTACT">CONTACT</a></li>
+     
         </ul>
       </nav>
-      <!-- <div class="button-container">
-        <a class="login animated-button login-header" href="{% url 'login' %}">
-          <span>Login</span>
-        </a>
-      </div> -->
+      {% endif %}
+
 
       <div class="button-container">
-        {% if user.is_authenticated %}
-          <!-- Show Logout button if the user is logged in -->
-          <form action="{% url 'logout' %}" method="post" style="display:inline;">
-            {% csrf_token %}
+
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+              {% csrf_token %}
+
+              {% if user.is_authenticated %}
+
             <button type="submit" class="login animated-button login-header">
               <span>Logout</span>
             </button>
           </form>
-        {% else %}
-          <!-- Show Login button if the user is not logged in -->
+          {% else %}
+
           <a class="login animated-button login-header" href="{% url 'login' %}">
             <span>Login</span>
+            {% endif %}
+
           </a>
-        {% endif %}
       </div>
 
     </header>

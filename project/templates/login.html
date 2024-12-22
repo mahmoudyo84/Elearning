@@ -6,6 +6,7 @@
     <title>E-Learning Platform - Login</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+    <script src="{% static 'js/login.js' %}" defer></script>
   </head>
   <body>
     <section class="main-container">
@@ -38,21 +39,14 @@
 
           <!-- Add the POST method to send data to the view -->
           <form class="form-container" method="POST">
-            {% csrf_token %} <!-- CSRF protection token -->
-
-            <!-- Username input field -->
+            {% csrf_token %}
             <div class="input-container">
               <input
                 class="inputs"
                 placeholder="Enter your username"
                 name="username" 
                 type="text"
-                value="{{ request.POST.username }}"/> 
-                
-                <!-- Make sure this matches the field name in the view -->
-                <!-- type ="text"
-                value="{{ request.POST.username }}"  Preserve value after form submission -->
-              
+                value="{{ form.username.value|default_if_none:'' }}"/> 
             </div>
 
             <!-- Password input field -->
@@ -61,12 +55,8 @@
                 class="inputs"
                 placeholder="Enter your password"
                 name="password" 
-                type="password"/> 
-                
-                
-                <!-- Make sure this matches the field name in the view -->
-                <!-- type="password"  Change to "password" to hide the input -->
-              
+                type="password"
+                value=""/>
             </div>
 
             <!-- Error message display -->
@@ -81,12 +71,12 @@
             <!-- Sign in button -->
             <div class="input-container sign-container">
               <a class="sign-up-btn" href="{% url 'register' %}">Create a new account</a>
+              {% csrf_token %}
               <button class="sign-in-btn" type="submit">Sign In</button>
             </div>
           </form>
         </div>
       </div>
     </section>
-    <script src="{% static 'js/login.js' %}" defer></script>
   </body>
 </html>

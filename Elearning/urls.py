@@ -18,6 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 from project import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
+from django.views.decorators.csrf import csrf_exempt
+
+
+
 
 
 
@@ -30,4 +37,10 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('courses/', views.courses_view, name='courses'),
     path('register/', views.register_view, name='register'),
+    # path('logout/', csrf_exempt(LogoutView.as_view()), name='logout'),
+    # path('logout/', LogoutView.as_view(), name='logout'),
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
