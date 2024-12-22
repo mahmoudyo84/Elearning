@@ -126,6 +126,7 @@
   outline: none !important;
   padding: 5px 14px;
   border-radius: 25px;
+  font-size: 12px;
 }
 
 button:disabled {
