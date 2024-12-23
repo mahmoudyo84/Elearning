@@ -61,3 +61,13 @@ def about_view(request):
 
 def courses_view(request):
     return render(request,"courses.html")
+
+    
+def dashboard_view(request):
+     return render(request, 'dashboard.html')
+
+def dashboard_CreateEdit_Instructor_form_view(request):
+    return render(request,"dashboard-CreateEdit-Instructor-form.html")
+
+def dashboard_CreateEdit_courses_form_view(request):
+    return render(request,"dashboard-CreateEdit-courses-form.html")

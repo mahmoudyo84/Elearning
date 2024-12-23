@@ -30,4 +30,8 @@ urlpatterns = [
     path('courses/', views.login_view, name='courses'),
     
     path('register/', views.register_view, name='register'),
+
+    path('dashboard/', views.dashboard_view, name='dashboard'),
+    path('dashboard-CreateEdit-Instructor-form/', views.dashboard_CreateEdit_Instructor_form_view, name='dashboard-CreateEdit-Instructor-form'),
+    path('dashboard-CreateEdit-courses-form/', views.dashboard_CreateEdit_courses_form_view, name='dashboard-CreateEdit-courses-form'),
 ]
