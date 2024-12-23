@@ -140,7 +140,11 @@ AUTHENTICATION_BACKENDS = [
 
 # AUTH_USER_MODEL = 'project.Users'
 
+AUTH_USER_MODEL = 'auth.user' 
 
 AUTH_USER_MODEL = 'project.users' 
 
 CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
+
+SESSION_COOKIE_AGE = 3600  # 1 hour (in seconds)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Session will expire when the browser is closed

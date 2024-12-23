@@ -25,6 +25,7 @@
       <nav class="nav-container">
         <ul class="list-wrapper">
           {% if user.is_authenticated %}
+          {% csrf_token %}
 
           <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
           <li><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>

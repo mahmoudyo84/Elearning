@@ -1,4 +1,5 @@
 from django.contrib import admin
+from .models import Users, Roles
 
 # Register your models here.
 from .models import (

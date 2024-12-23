@@ -12,52 +12,6 @@ class RegisterForm(forms.ModelForm):
         fields = ['Username', 'password', 'Name', 'Email', 'RoleID']
 
 
-# class LoginForm(AuthenticationForm):
-#     class Meta:
-#         model = Users
-#         fields = ['Username', 'Password']
-#         password = self.cleaned_data.get('Password')
-
-
-# class LoginForm(forms.Form):
-#     username = forms.CharField(
-#         max_length=255,
-#         required=True,
-#         widget=forms.TextInput(attrs={'placeholder': 'Enter your username', 'class': 'form-control'})
-#     )
-#     password = forms.CharField(
-#         max_length=255,
-#         required=True,
-#         widget=forms.PasswordInput(attrs={'placeholder': 'Enter your password', 'class': 'form-control'})
-#     )
-
-#     def clean(self):
-#         cleaned_data = super().clean()
-#         username = cleaned_data.get('username')
-#         password = cleaned_data.get('password')
-
-#         if username and password:
-#             try:
-#                 # Fetch user from the database
-#                 user = Users.objects.get(Username=username)
-                
-#                 # Verify the password
-#                 if not check_password(password, user.password):
-#                     raise forms.ValidationError("Incorrect password. Please try again.")
-                
-#                 # Attach user instance for later use in the view (added to cleaned_data)
-#                 cleaned_data['user'] = user
-
-#             except Users.DoesNotExist:
-#                 raise forms.ValidationError("Username does not exist.")
-
-#         return cleaned_data
-    
-#     def get_user(self):
-#         """Return the authenticated user instance after validation."""
-#         return getattr(self, 'user', None)  # Make sure to return None if user is not set
-
-
 class LoginForm(forms.Form):
     username = forms.CharField(
         max_length=255,
