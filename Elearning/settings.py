@@ -17,7 +17,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_URL = '/media/'  # URL for serving media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # File system path
+MEDIA_ROOT = os.path.join(BASE_DIR, 'project/static/media')  # File system path
 
 
 # Quick-start development settings - unsuitable for production
@@ -122,11 +122,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR ,'static']
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR ,'project/static/']
 # Directory where static files will be collected when running 'collectstatic'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'project/static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
