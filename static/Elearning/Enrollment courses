@@ -1,0 +1,45 @@
+# Enrollment Table
+class Enrollment(models.Model):
+    student = models.ForeignKey(Users, on_delete=models.CASCADE)  # ربط الطالب
+    course = models.ForeignKey(Courses, on_delete=models.CASCADE)  # ربط الدورة
+    enrollment_date = models.DateField(auto_now_add=True)  # تاريخ التسجيل
+
+    def __str__(self):
+        return f"{self.student.Username} - {self.course.CourseName}"
+# عرض الدورات للطالب وتسجيله فيها
+def enroll_in_course(request, course_id):
+    course = get_object_or_404(Courses, id=course_id)
+    if request.method == 'POST':
+        user = request.user
+        enrollment, created = Enrollment.objects.get_or_create(student=user, course=course)
+        if created:
+            messages.success(request, f"Successfully enrolled in {course.CourseName}")
+        else:
+            messages.warning(request, f"Already enrolled in {course.CourseName}")
+        return redirect('course_list')
+    return render(request, 'courses/enroll_in_course.html', {'course': course})
+    # عرض الدورات للطالب وتسجيله فيها
+def enroll_in_course(request, course_id):
+    #  الدورة بناءً على المع (course_id)
+    course = get_object_or_404(Courses, id=course_id)
+    
+    # إذا كان الطلب من نوع POST (أي أن الطالب قام بإرسال الطلب)
+    if request.method == 'POST':
+        user = request.user  # جلب المستخدم الحالي (الطالب)
+        
+        #محاولة الحصول على تسجيل للطالب والدورi وإذا لم يكن موجودًا يتم إنشاؤه
+        enrollment, created = Enrollment.objects.get_or_create(student=user, course=course)
+        
+        # إذا تم إنشاء التسجيل بنجاح
+        if created:
+            messages.success(request, f"Successfully enrolled in {course.CourseName}")
+        else:
+           # إذا كان الطالب قد سجل في الدورة 
+            messages.warning(request, f"Already enrolled in {course.CourseName}")
+        
+        # إعادة التوجيه إلى قائمة الدورات
+        return redirect('course_list')
+    
+    # عرض النموذج الذي يمكن للطالب من خلاله التسجيل في الدورة
+    return render(request, 'courses/enroll_in_course.html', {'course': course})
+
