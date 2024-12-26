@@ -39,6 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'project',
+    'django.contrib.messages',  
+    'django.contrib.staticfiles',  
+]
+
+# إعدادات ملفات Static و Media
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 ]
 
 MIDDLEWARE = [
