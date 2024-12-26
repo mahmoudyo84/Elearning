@@ -354,3 +354,13 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.text
+        class UserProfile(models.Model):
+    user = models.OneToOneField(Users, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, blank=True)  # السيرة الذاتية
+    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)  # صورة الملف الشخصي
+    phone_number = models.CharField(max_length=15, blank=True)  # رقم الهاتف
+    is_instructor = models.BooleanField(default=False)  # إذا كان المستخدم مدرّسًا
+
+    def __str__(self):
+        return self.user.Username
+
