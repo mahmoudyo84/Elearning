@@ -138,4 +138,8 @@ def student_dashboard(request):
     enrollments = Enrollment.objects.filter(student=student)
     courses = [enrollment.course for enrollment in enrollments]
     return render(request, 'students/dashboard.html', {'student': student, 'courses': courses, 'enrollments': enrollments})
+@login_required
+def user_profile(request):
+    user_profile = UserProfile.objects.get(user=request.user)
+    return render(request, 'profile/user_profile.html', {'user_profile': user_profile})
 
