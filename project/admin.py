@@ -23,78 +23,77 @@ admin.site.register(UserCourses)
 from django.contrib import admin
 from .models import Instructor, Course, Enrollment
 
-admin.site.register(Instructor)
-admin.site.register(Course)
-admin.site.register(Enrollment)
-##################
-from django.contrib import admin
-from .models import Exam, Question, Answer
-
-admin.site.register(Exam)
-admin.site.register(Question)
-admin.site.register(Answer)
-
-admin.site.register(CoursesExams)
-admin.site.register(ExamsQuestions)
-admin.site.register(QuestionsChoices)
-admin.site.register(ExamAnswer)
-admin.site.register(UsersExams)
 '''
-from django.contrib import admin
+
+from django.contrib import admin 
 from .models import (
     Roles, Screens, Privileges, Users, Categories,
     Courses, CourseDetails, CourseMedia, UserCourses,
     CoursesExams, ExamsQuestions, QuestionsChoices,
-    ExamAnswer, UsersExams, Instructor, Enrollment,
-    Exam, Question, Answer
+    ExamAnswer, UsersExams, Instructor, Course, Enrollment,
+    Exam, Question, Answer, UserProfile
 )
 
-# تخصيص واجهة الإدارة لموديلات مختلفة
-class CourseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'created_at', 'updated_at')
-    search_fields = ('title', 'category__name')
-    list_filter = ('category',)
 
-class InstructorAdmin(admin.ModelAdmin):
-    list_display = ('name', 'bio', 'courses_taught')
-    search_fields = ('name',)
-    list_filter = ('courses__category',)
+#  Roles (الأدوار)
+admin.site.register(Roles)  
 
-class EnrollmentAdmin(admin.ModelAdmin):
-    list_display = ('student', 'course', 'enrollment_date')
-    search_fields = ('student__name', 'course__title')
+#  Screens (الشاشات)
+admin.site.register(Screens)  
 
-class ExamAdmin(admin.ModelAdmin):
-    list_display = ('course', 'title', 'date_created')
-    search_fields = ('title', 'course__title')
+#  Privileges (الصلاحيات)
+admin.site.register(Privileges)  
 
-# تسجيل النماذج في واجهة الإدارة
-admin.site.register(Roles)
-admin.site.register(Screens)
-admin.site.register(Privileges)
-admin.site.register(Users)
-admin.site.register(Categories)
+#  Users (المستخدمين)
+admin.site.register(Users)  
 
-# تسجيل الدورات
-admin.site.register(Courses, CourseAdmin)
-admin.site.register(CourseDetails)
-admin.site.register(CourseMedia)
-admin.site.register(UserCourses)
+#  Categories (الفئات)
+admin.site.register(Categories)  
 
-# تسجيل الامتحانات والأسئلة
-admin.site.register(CoursesExams)
-admin.site.register(ExamsQuestions)
-admin.site.register(QuestionsChoices)
-admin.site.register(ExamAnswer)
-admin.site.register(UsersExams)
+#  Courses (الدورات)
+admin.site.register(Courses)  
 
-# تسجيل المعلمين
-admin.site.register(Instructor, InstructorAdmin)
+#  CourseDetails (تفاصيل الدورة)
+admin.site.register(CourseDetails)  
 
-# تسجيل التسجيلات في الدورات
-admin.site.register(Enrollment, EnrollmentAdmin)
+#  CourseMedia (الوسائط المرتبطة بالدورة)
+admin.site.register(CourseMedia)  
 
-# تسجيل الامتحانات والأسئلة
-admin.site.register(Exam, ExamAdmin)
-admin.site.register(Question)
-admin.site.register(Answer)
+#  UserCourses (الدورات التي سجل فيها المستخدم)
+admin.site.register(UserCourses)  
+
+#  CoursesExams (امتحانات الدورات)
+admin.site.register(CoursesExams)  
+
+#  ExamsQuestions (أسئلة الامتحانات)
+admin.site.register(ExamsQuestions)  
+
+#  QuestionsChoices (خيارات الإجابة على الأسئلة)
+admin.site.register(QuestionsChoices)  
+
+#  ExamAnswer (إجابات الامتحانات)
+admin.site.register(ExamAnswer)  
+
+#  UsersExams (نتائج الامتحانات الخاصة بالمستخدمين)
+admin.site.register(UsersExams)  
+
+#  Instructor (المدرب)
+admin.site.register(Instructor)  
+
+#  Course (الدورة)
+admin.site.register(Course)  
+
+#  Enrollment (التسجيلات في الدورات)
+admin.site.register(Enrollment)  
+
+#  Exam (الامتحان)
+admin.site.register(Exam)  
+
+#  Question (السؤال)
+admin.site.register(Question)  
+
+#  Answer (الإجابة)
+admin.site.register(Answer)  
+
+#  UserProfile (الملف الشخصي للمستخدم)
+admin.site.register(UserProfile)  
