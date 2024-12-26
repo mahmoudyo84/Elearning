@@ -38,3 +38,7 @@ urlpatterns = [
 urlpatterns = [
     path('profile/', views.user_profile, name='user_profile'),
 ]
+
+urlpatterns = [
+    path('dashboard/', views.student_dashboard, name='student_dashboard'),
+]
