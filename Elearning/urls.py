@@ -37,10 +37,15 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('courses/', views.courses_view, name='courses'),
     path('register/', views.register_view, name='register'),
-    path('quiz/', views.quiz_view, name='quiz'),
+    # path('quiz/', views.quiz_view, name='quiz'),
     path('profile/', views.profile , name = "profile"),
     path('quizes/',views.quizes , name="quizes"),
-    path('enrolled/',views.enrolled , name="enrollment")
+    # path('enrolled/',views.enrolled , name="enrollment")
+    path('quiz/<int:exam_id>/', views.quiz_view, name='quiz'),
+    path('quiz/', views.quiz_view, name='quiz'),
+    path('quiz/submit/', views.submit_quiz, name='submit_quiz'),
+    path('quiz/<int:exam_id>/<int:question_index>/', views.quiz_view, name='quiz'),
+    
 ]
 
 if settings.DEBUG:
