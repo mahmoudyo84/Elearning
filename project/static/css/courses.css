@@ -303,7 +303,7 @@ path {
 
 .courses-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
   gap: 20px;
   position: relative;
@@ -319,17 +319,34 @@ path {
   align-items: center;
 }
 
-.course-card {
-  width: 700px; /* Adjust width of cards */
+/* .course-card {
+  width: 700px; /* Adjust width of cards
   margin: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: rotate(0deg); /* Rotate cards for the Z layout 
+  transition: transform 0.3s ease-in-out;
+} */
+
+.course-card {
+  width: 100%; /* Adjust width of cards */
   padding: 20px;
   background-color: #f5f5f5;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transform: rotate(0deg); /* Rotate cards for the Z layout */
   transition: transform 0.3s ease-in-out;
-}
 
+}
+.courses-list{
+  display: grid;
+  grid-template-columns: repeat(2,1fr); 
+  gap: 25px;
+  width: 100%;
+
+}
 /* Add hover effect to rotate the cards back to a regular position */
 .course-card:hover {
   transform: rotate(0deg); /* Reset rotation on hover */

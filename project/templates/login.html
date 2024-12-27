@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Learning Platform - Login</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
     <script src="{% static 'js/login.js' %}" defer></script>
     <link
       rel="stylesheet"
@@ -53,32 +52,15 @@
           </div>
 
           <!-- Add the POST method to send data to the view -->
-<<<<<<< HEAD
           <form class="form-container" method="POST">
             {% csrf_token %}
-=======
-          <form class="form-container" id="loginForm" method="POST">
-            {% csrf_token %}
-            <!-- CSRF protection token -->
-
-            <!-- Username input field -->
->>>>>>> origin/design-fix
             <div class="input-container">
               <input
                 class="inputs"
                 placeholder="Enter your username"
                 name="username"
                 type="text"
-<<<<<<< HEAD
                 value="{{ form.username.value|default_if_none:'' }}"/> 
-=======
-                value="{{ request.POST.username }}"
-              />
-
-              <!-- Make sure this matches the field name in the view -->
-              <!-- type ="text"
-                value="{{ request.POST.username }}"  Preserve value after form submission -->
->>>>>>> origin/design-fix
             </div>
 
             <!-- Password input field -->
@@ -86,18 +68,9 @@
               <input
                 class="inputs"
                 placeholder="Enter your password"
-<<<<<<< HEAD
                 name="password" 
                 type="password"
                 value=""/>
-=======
-                name="password"
-                type="password"
-              />
-
-              <!-- Make sure this matches the field name in the view -->
-              <!-- type="password"  Change to "password" to hide the input -->
->>>>>>> origin/design-fix
             </div>
 
             <!-- Error message display -->
@@ -119,13 +92,10 @@
         </div>
       </div>
     </section>
-<<<<<<< HEAD
-=======
     <script src="{% static 'js/login.js' %}" defer></script>
     <script
       src="https://kit.fontawesome.com/7031694be7.js"
       crossorigin="anonymous"
     ></script>
->>>>>>> origin/design-fix
   </body>
 </html>
