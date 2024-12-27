@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
-    <script src="{% static 'js/courses.js' %}" defer></script>
-    <link rel="stylesheet" href="{% static 'css/courses.css' %}" />
-    <link rel="icon" type="image/x-icon" href="{% static 'images/Preview (1).png' %}">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'images/Preview (1).png' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}" />
     <title>BrightMind</title>
   </head>
   <body>
@@ -21,7 +24,7 @@
           <li><a class="nav-link" href="{% url 'courses' %}">COURSES</a></li>
           <li><a class="nav-link" href="{% url 'quiz' %}">QUIZ</a></li>
         </ul>
-      </nav>      
+      </nav>
       <div class="button-container">
         <a class="login animated-button login-header" href="{% url 'login' %}">
           <span>Login</span>
@@ -35,8 +38,110 @@
           <p>Practice your skills with us on the quiz page.</p>
         </div>
       </section>
-      <section class="courses-container">
-        <div class="courses-wrapper"></div>
+      <section class="quiz-section">
+        <div class="quiz-header">
+          <div>
+            <h4>MCT MOCK Tests</h4>
+            <p style="color: rgb(156, 154, 154)">session 1</p>
+          </div>
+          <div class="bar"><div class="bar-background"></div></div>
+          <div class="two-btn">
+            <div class="button-container">
+              <button class="login animated-button login-header">
+                <span>Review</span>
+              </button>
+            </div>
+            <div class="button-container">
+              <button class="login animated-button login-header">
+                <span>Mark as review</span>
+              </button>
+            </div>
+          </div>
+          <div class="two-btn">
+            <svg
+              class="svg"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="#000000"
+                d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"
+              />
+            </svg>
+            <p>00:00 Min</p>
+          </div>
+        </div>
+        <div class="sec-quiz">
+          <div class="wts">
+            <div>
+              <p style="color: rgb(156, 154, 154)">Question 1</p>
+              <p style="font-weight: bold; margin: 10px 0 30px">
+                She ________ in Florida but prefers California.
+              </p>
+            </div>
+            <hr />
+            <div>
+              <div class="option">
+                <label for="first-choose">(A). Lives</label>
+                <input type="radio" name="ra" id="first-choose" />
+              </div>
+              <div class="option">
+                <label for="sec-choose">(B). Goges</label>
+                <input type="radio" name="ra" id="sec-choose" />
+              </div>
+              <div class="option">
+                <label for="third-choose">(C). Arrives</label>
+                <input type="radio" name="ra" id="third-choose" />
+              </div>
+              <div class="option">
+                <label for="forth-choose">(D). Helps</label>
+                <input type="radio" name="ra" id="forth-choose" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btns">
+          <div class="button-container">
+            <div class="login animated-button login-header flexAbility">
+              <div class="arrow ll">
+                <svg
+                  style="rotate: 180deg;"
+                  class="svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="#000000"
+                    d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                  />
+                </svg>
+              </div>
+              <span>Previous</span>
+            </div>
+          </div>
+          <div class="button-container">
+            <div class="login animated-button login-header flexAbility">
+              <span>Next</span>
+              <div class="arrow rr">
+                <svg
+                class="svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="#000000"
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                />
+              </svg>
+              </div>
+            </div>
+            <div class="button-container pos">
+              <button class="login animated-button login-header flexAbility">
+                <span>Finish</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <footer>
@@ -92,6 +197,6 @@
         &copy; Copyright 2024 BrightMind. All rights reserved.
       </div>
     </footer>
-    <script src="./courses.js"></script>
+    <script src="{% static 'js/quiz.js' %}" defer></script>
   </body>
 </html>
