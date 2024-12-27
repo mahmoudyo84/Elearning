@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     {% load static %}
-    <script src="{% static 'js/courses.js' %}" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/courses.css' %}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Preview (1).png' %}">
     <title>BrightMind</title>
   </head>
   <body>
@@ -18,9 +18,14 @@
           <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
           <li><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
           <li><a class="nav-link" href="{% url 'courses' %}">COURSES</a></li>
+<<<<<<< HEAD
           <li><a class="nav-link" href="../contact/contact.html">CONTACT</a></li>
+=======
+          <li><a class="nav-link" href="{% url 'quiz' %}">QUIZ</a></li>
+>>>>>>> origin/design-fix
         </ul>
       </nav>
+      
       <div class="button-container">
         <a class="login animated-button login-header" href="{% url 'login' %}">
           <span>Login</span>
@@ -112,6 +117,7 @@
           </div>
           <div class="link-footer">
             <div class="a">
+<<<<<<< HEAD
               <a href="#">About Us</a>
               <a href="#">What We Do</a>
               <a href="#">FAQ</a>
@@ -125,6 +131,21 @@
               <a href="#">Services</a>
               <a href="#">Industries</a>
               <a href="#">Offices</a>
+=======
+              <p>About Us</p>
+              <p>What We Do</p>
+              <p>FAQ</p>
+            </div>
+            <div class="a">
+              <p>Career</p>
+              <p>Blog</p>
+              <p>Contact Us</p>
+            </div>
+            <div class="a">
+              <p>Services</p>
+              <p>Industries</p>
+              <p>Offices</p>
+>>>>>>> origin/design-fix
             </div>
           </div>
         </div>
@@ -133,7 +154,12 @@
         &copy; Copyright 2024 BrightMind. All rights reserved.
       </div>
     </footer>
+<<<<<<< HEAD
 
     <!-- <script src="./courses.js"></script> -->
   </body>
+=======
+    <script src="{% static 'js/courses.js' %}" defer></script>
+ </body>
+>>>>>>> origin/design-fix
 </html>

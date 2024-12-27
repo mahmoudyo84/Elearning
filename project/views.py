@@ -17,6 +17,15 @@ from .models import Categories, Courses, CourseDetails, CourseMedia
 
 
 
+def profile(request):
+    return render(request,'Profile.html')
+
+def enrolled(request):
+    return render(request,'enrollment.html')
+
+def quizes(request):
+    return render(request , 'exams.html')
+
 def register_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -134,6 +143,9 @@ def courses_view(request):
         })
 
     return render(request, 'courses.html', {'courses_data': courses_data})
+
+def quiz_view(request):
+    return render(request,"quiz.html")
 
 
 #Roles_View

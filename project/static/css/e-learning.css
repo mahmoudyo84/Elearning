@@ -11,8 +11,7 @@ h1 {
   padding: 0 !important;
   margin: 0 !important;
 }
-body {
-}
+
 .bg-section {
   height: 100vh;
   background-image: url(../images/istockphoto-1931634876-612x612.jpg);
@@ -106,10 +105,7 @@ a {
   color: black;
   background-color: rgb(18, 209, 129);
 }
-.main {
-  /* width: 75%; */
-  /* padding: 150px 0; */
-}
+
 
 .main-wrapper {
   width: 75%;
@@ -147,8 +143,6 @@ a {
   width: 65%;
   font-weight: 400;
 }
-.text-sub-wrapper {
-}
 
 .button-container {
   position: relative;
@@ -179,7 +173,7 @@ a {
   left: -100%;
   width: 100%;
   height: 100%;
-  background-color: #1bc67e;
+  background-image: linear-gradient(to right, #03915b, #0f4e34);
   z-index: 0;
   transition: left 0.3s ease, right 0.3s ease;
 }
@@ -322,10 +316,12 @@ footer {
   width: auto;
   margin: auto;
   gap: 40px;
+  cursor: pointer;
 }
 
-.a a:hover {
+.a p:hover {
   color: #1bc67e;
+  cursor: pointer;
 }
 .control {
   display: flex;

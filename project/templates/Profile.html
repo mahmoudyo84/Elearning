@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+  </head>
+  <body>
+    <main class="main-container">
+      <section class="side-panel identifier">
+        <div class="side-panel-wrapper">
+          <div class="profile-information">
+            <div class="image-container">
+              <img src="{% static 'images/profile.jpeg' %}" alt="" />
+            </div>
+            <div class="profile-headline">
+              <h3>Basem Elsawy</h3>
+              <p>Class A</p>
+            </div>
+          </div>
+          <nav class="side-nav profile-navigation">
+            <ul class="side-nav nav-list">
+              <li class="active">
+                <a href="{% url 'profile' %}">Personal Data</a>
+                <i class="fa-solid fa-user"></i>
+              </li>
+              <li>
+                <a href="{% url 'enrollment' %}">Enrolled Courses</a>
+                <i class="fa-solid fa-book"></i>
+              </li>
+              <li>
+                <a href="{% url 'quizes' %}">Exams</a>
+                <i class="fa-solid fa-paste"></i>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="logo">
+          <img src="{% static 'images/Preview (1).png' %}" alt="" />
+        </div>
+      </section>
+      <section class="main-content content-section">
+        <div class="dashboard-header">
+          <div class="head-wrapper">
+            <div class="nav-buttons">
+              <i class="fa-solid fa-right-to-bracket"></i>
+              <a href="{% url 'index' %}"> Logout </a>
+            </div>
+            <div class="nav-buttons">
+              <i class="fa-solid fa-house"></i>
+              <a href="{% url 'index' %}">Home</a>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-body">
+          <div class="dashboard-wrapper">
+            <h2 class="form-headline">Edit Personal Information</h2>
+            <form action="" id="form">
+              <div class="input-container">
+                <div class="input">
+                  <label for="username">Username</label>
+                  <input
+                    disabled
+                    class="inputs"
+                    type="text"
+                    id="username"
+                    value="basemElsawy12"
+                  />
+                </div>
+                <div class="edit-btn">
+                  <button class="buttons">edit</button>
+                  <button class="submit">submit</button>
+                </div>
+              </div>
+              <div class="input-container">
+                <div class="input">
+                  <label for="email">email</label>
+                  <input
+                    disabled
+                    class="inputs"
+                    type="text"
+                    id="email"
+                    value="basemElsawy25@outlook.com"
+                  />
+                </div>
+                <div class="edit-btn">
+                  <button class="buttons">edit</button>
+                  <button class="submit">submit</button>
+                </div>
+              </div>
+              <div class="input-container">
+                <div class="input">
+                  <label for="name">Fullname</label>
+                  <input
+                    disabled
+                    class="inputs"
+                    type="text"
+                    id="name"
+                    value="basem ashraf mohamed"
+                  />
+                </div>
+                <div class="edit-btn">
+                  <button class="buttons">edit</button>
+                  <button class="submit">submit</button>
+                </div>
+              </div>
+              <div class="input-container">
+                <div class="input">
+                  <label for="phone">Phone Number</label>
+                  <input
+                    disabled
+                    class="inputs"
+                    type="text"
+                    id="phone"
+                    value="01066203541"
+                  />
+                </div>
+                <div class="edit-btn">
+                  <button class="buttons">edit</button>
+                  <button class="submit">submit</button>
+                </div>
+              </div>
+              <div class="input-container">
+                <div class="input">
+                  <label for="address">Address</label>
+                  <input
+                    disabled
+                    class="inputs"
+                    type="text"
+                    id="address"
+                    value="maryotya haram"
+                  />
+                </div>
+                <div class="edit-btn">
+                  <button class="buttons">edit</button>
+                  <button class="submit">submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="{% static 'js/profile.js' %}"></script>
+    <script
+      src="https://kit.fontawesome.com/7031694be7.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
