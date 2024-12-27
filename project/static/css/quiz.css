@@ -147,8 +147,7 @@
     background-blend-mode: overlay;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center -200px;
-    background-attachment: fixed;
+    background-position: center;
   }
   .bg-text {
     width: 75%;
@@ -312,7 +311,7 @@
   }
 
   .bar-background{
-    width:40%;
+    width:20%;
     height: 100%;
     float: left;
     background-image: linear-gradient(to right, #03915b, #0f4e34);
@@ -392,4 +391,15 @@ right: 0;
   position: absolute;
   right: 60px;
   bottom: 0px ;
+}
+.prof{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #1bc67e;
+  background-image: url(../images/profile.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 160px;
 }

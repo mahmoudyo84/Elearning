@@ -147,8 +147,7 @@ a {
   background-blend-mode: overlay;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center -200px;
-  background-attachment: fixed;
+  background-position: center;
 }
 .bg-text {
   width: 75%;
@@ -374,4 +373,16 @@ video{
     width: 90%; /* Make cards smaller on mobile */
     margin: 10px 0;
   }
+}
+
+.prof{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #1bc67e;
+  background-image: url(../images/profile.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 160px;
 }
