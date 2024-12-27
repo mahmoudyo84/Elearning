@@ -166,14 +166,6 @@ a {
   }
 }
 
-.courses-wrapper {
-  width: 75%;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  padding-block: 45px;
-  gap: 30px;
-}
 .box-container {
   background-image: url(../images/istockphoto-1931634876-612x612.jpg);
   height: 250px !important;
@@ -225,7 +217,7 @@ a {
 }
 
 footer {
-  background-image: url(..static/images/Best\ Data\ Labeling\ Tools\ For\ Machine\ Learning\ in\ 2023.jpg);
+  background-image: url(../images/Best\ Data\ Labeling\ Tools\ For\ Machine\ Learning\ in\ 2023.jpg);
   background-color: #000000bb;
   background-blend-mode: multiply;
   background-size: cover;
@@ -272,7 +264,6 @@ footer {
   width: auto;
   margin: auto;
   gap: 40px;
-  cursor: pointer;
 }
 
 .a p:hover {
@@ -301,13 +292,24 @@ path {
   color: black !important;
 }
 
+.courses-container{
+  width: 80%;
+  margin: auto;
+
+}
 .courses-wrapper {
-  display: flex;
-  /* flex-wrap: wrap; */
-  justify-content: space-between;
-  gap: 20px;
-  position: relative;
-  overflow: hidden;
+  width: 75%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  padding-block: 45px;
+  gap: 30px;
+}
+
+video{
+  width: 100%;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 
 /* Create a diagonal layout */
@@ -317,6 +319,7 @@ path {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 
 /* .course-card {
@@ -338,11 +341,12 @@ path {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transform: rotate(0deg); /* Rotate cards for the Z layout */
   transition: transform 0.3s ease-in-out;
-
+  margin-bottom: 20px;
 }
+
 .courses-list{
-  display: grid;
-  grid-template-columns: repeat(2,1fr); 
+  /* display: grid;
+  grid-template-columns: repeat(1,1fr);  */
   gap: 25px;
   width: 100%;
 

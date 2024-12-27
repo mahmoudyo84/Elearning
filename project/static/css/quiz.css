@@ -166,14 +166,6 @@
     }
   }
   
-  .courses-wrapper {
-    width: 75%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    padding-block: 45px;
-    gap: 30px;
-  }
   .box-container {
     background-image: url(../images/istockphoto-1931634876-612x612.jpg);
     height: 250px !important;
@@ -272,7 +264,6 @@
     width: auto;
     margin: auto;
     gap: 40px;
-    cursor: pointer;
   }
   
   .a p:hover {
@@ -317,13 +308,15 @@
     height: 20px;
     border-radius: 300px;
     overflow: hidden;
+    border: 1px solid #1bc67e;
   }
 
   .bar-background{
-    width:100%;
+    width:40%;
     height: 100%;
     float: left;
     background-image: linear-gradient(to right, #03915b, #0f4e34);
+    transition: .3s ease;
   }
 
   .two-btn{

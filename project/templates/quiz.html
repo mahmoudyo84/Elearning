@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
     <link
       rel="icon"
       type="image/x-icon"
       href="{% static 'images/Preview (1).png' %}"
     />
-    <link rel="stylesheet" href="{% static 'css/quiz.css' %}" />
     <title>BrightMind</title>
   </head>
   <body>
@@ -19,15 +20,30 @@
       </div>
       <nav class="nav-container">
         <ul class="list-wrapper">
+          {% if user.is_authenticated %} {% csrf_token %}
+
           <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
           <li><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
-          <li><a class="nav-link" href="{% url 'courses' %}">COURSES</a></li>
+          <li>
+            <a class="nav-link" href="{% url 'courses' %}">COURSES</a>
+          </li>
           <li><a class="nav-link" href="{% url 'quiz' %}">QUIZ</a></li>
         </ul>
       </nav>
+      {% endif %}
       <div class="button-container">
+        <form action="{% url 'logout' %}" method="post" style="display: inline">
+          {% csrf_token %} {% if user.is_authenticated %}
+
+          <button type="submit" class="login animated-button login-header">
+            <span>Logout</span>
+          </button>
+        </form>
+        {% else %}
+
         <a class="login animated-button login-header" href="{% url 'login' %}">
           <span>Login</span>
+          {% endif %}
         </a>
       </div>
     </header>
@@ -105,7 +121,7 @@
             <div class="login animated-button login-header flexAbility">
               <div class="arrow ll">
                 <svg
-                  style="rotate: 180deg;"
+                  style="rotate: 180deg"
                   class="svg"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
@@ -124,15 +140,15 @@
               <span>Next</span>
               <div class="arrow rr">
                 <svg
-                class="svg"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="#000000"
-                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                />
-              </svg>
+                  class="svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="#000000"
+                    d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                  />
+                </svg>
               </div>
             </div>
             <div class="button-container pos">
