@@ -3,7 +3,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from .models import Users
 from django.contrib.auth.hashers import make_password
 
-
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = Users
@@ -23,3 +22,4 @@ class LoginForm(AuthenticationForm):
     class Meta:
         model = Users
         fields = ['Username', 'Password']
+        

@@ -11,7 +11,11 @@
       type="text/css"
       href="{% static 'css/index.css' %}"
     />
-    <link rel="icon" type="image/x-icon" href="{% static 'images/Preview (1).png' %}">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'images/Preview (1).png' %}"
+    />
     <title>BrightMind</title>
   </head>
   <body>
@@ -27,7 +31,7 @@
           <li><a class="nav-link" href="{% url 'quiz' %}">QUIZ</a></li>
         </ul>
       </nav>
-      
+
       <!-- <div class="button-container">
         <a class="login animated-button login-header" href="{% url 'login' %}">
           <span>Login</span>
@@ -36,21 +40,20 @@
 
       <div class="button-container">
         {% if user.is_authenticated %}
-          <!-- Show Logout button if the user is logged in -->
-          <form action="{% url 'logout' %}" method="post" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit" class="login animated-button login-header">
-              <span>Logout</span>
-            </button>
-          </form>
+        <!-- Show Logout button if the user is logged in -->
+        <form action="{% url 'logout' %}" method="post" style="display: inline">
+          {% csrf_token %}
+          <button type="submit" class="login animated-button login-header">
+            <span>Logout</span>
+          </button>
+        </form>
         {% else %}
-          <!-- Show Login button if the user is not logged in -->
-          <a class="login animated-button login-header" href="{% url 'login' %}">
-            <span>Login</span>
-          </a>
+        <!-- Show Login button if the user is not logged in -->
+        <a class="login animated-button login-header" href="{% url 'login' %}">
+          <span>Login</span>
+        </a>
         {% endif %}
       </div>
-
     </header>
     <main class="main">
       <section class="bg-section">
@@ -58,7 +61,7 @@
           <div class="text-wrapper">
             <div class="text-sub-wrapper">
               <p class="text-p">GET STARTED WITH ONLINE COURSES</p>
-              <h1 class="head-l">BEST ONLINE<br>LEARNING SYSTEM</h1>
+              <h1 class="head-l">BEST ONLINE<br />LEARNING SYSTEM</h1>
               <p class="description">
                 An elearning website can significantly enhance your online
                 learning experience by providing an entry point to any LMS.
