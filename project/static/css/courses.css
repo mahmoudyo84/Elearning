@@ -115,7 +115,7 @@ a {
   left: -100%;
   width: 100%;
   height: 100%;
-  background-color: #1bc67e;
+  background-image: linear-gradient(to right, #03915b, #0f4e34);
   z-index: 0;
   transition: left 0.3s ease, right 0.3s ease;
 }
@@ -225,7 +225,7 @@ a {
 }
 
 footer {
-  background-image: url(../images/Best\ Data\ Labeling\ Tools\ For\ Machine\ Learning\ in\ 2023.jpg);
+  background-image: url(..static/images/Best\ Data\ Labeling\ Tools\ For\ Machine\ Learning\ in\ 2023.jpg);
   background-color: #000000bb;
   background-blend-mode: multiply;
   background-size: cover;
@@ -272,10 +272,12 @@ footer {
   width: auto;
   margin: auto;
   gap: 40px;
+  cursor: pointer;
 }
 
 .a p:hover {
   color: #1bc67e;
+  cursor: pointer;
 }
 .control {
   display: flex;
@@ -299,5 +301,73 @@ path {
   color: black !important;
 }
 
+.courses-wrapper {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
 
-  
+/* Create a diagonal layout */
+.category {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .course-card {
+  width: 700px; /* Adjust width of cards
+  margin: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: rotate(0deg); /* Rotate cards for the Z layout 
+  transition: transform 0.3s ease-in-out;
+} */
+
+.course-card {
+  width: 100%; /* Adjust width of cards */
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: rotate(0deg); /* Rotate cards for the Z layout */
+  transition: transform 0.3s ease-in-out;
+
+}
+.courses-list{
+  display: grid;
+  grid-template-columns: repeat(2,1fr); 
+  gap: 25px;
+  width: 100%;
+
+}
+/* Add hover effect to rotate the cards back to a regular position */
+.course-card:hover {
+  transform: rotate(0deg); /* Reset rotation on hover */
+}
+
+/* Optional: Set a background color for the sections
+.bg-section {
+  background-color: #f7f7f7;
+  padding: 50px 0;
+  text-align: center;
+} */
+
+/* Media query for smaller screens to make the cards more responsive */
+@media (max-width: 768px) {
+  .courses-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .course-card {
+    width: 90%; /* Make cards smaller on mobile */
+    margin: 10px 0;
+  }
+}

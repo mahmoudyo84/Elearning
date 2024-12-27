@@ -14,31 +14,34 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+from django.contrib import admin 
+from django.urls import path , include
 from django.views.generic import TemplateView
 from project import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
+from django.views.decorators.csrf import csrf_exempt
+
+
+
+
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="index.html"), name="index"),
-    # path('', views.index, name="index"),
-    path('about/', views.login_view, name='about'),
+    path('about/', views.about_view, name='about'),
     path('login/', views.login_view, name='login'),
-    path('courses/', views.login_view, name='courses'),
-    
+    path('logout/', views.logout_view, name='logout'),
+    path('courses/', views.courses_view, name='courses'),
     path('register/', views.register_view, name='register'),
-
-    path('dashboard/', views.dashboard_view, name='dashboard'),
-    path('dashboard-CreateEdit-Instructor-form/', views.dashboard_CreateEdit_Instructor_form_view, name='dashboard-CreateEdit-Instructor-form'),
-    path('dashboard-CreateEdit-courses-form/', views.dashboard_CreateEdit_courses_form_view, name='dashboard-CreateEdit-courses-form'),
-]
-urlpatterns = [
-    path('profile/', views.user_profile, name='user_profile'),
+    path('quiz/', views.quiz_view, name='quiz'),
+    path('profile/', views.profile , name = "profile"),
+    path('quizes/',views.quizes , name="quizes"),
+    path('enrolled/',views.enrolled , name="enrollment")
 ]
 
-urlpatterns = [
-    path('dashboard/', views.student_dashboard, name='student_dashboard'),
-]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

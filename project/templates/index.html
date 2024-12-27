@@ -5,16 +5,17 @@
     <meta charset="UTF-8" />
 
     {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'css/index.css' %}"
+      href="{% static 'css/e-learning.css' %}"
     />
-
     <script src="{% static 'js/e-learning.js' %}" defer></script>
-    <link rel="stylesheet" href="e-learning.css" />
+    <link rel="stylesheet" href="{% static 'css/e-learning.css' %}" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Preview (1).png' %}">
     <title>BrightMind</title>
   </head>
   <body>
@@ -24,22 +25,39 @@
       </div>
       <nav class="nav-container">
         <ul class="list-wrapper">
+          {% if user.is_authenticated %}
+          {% csrf_token %}
+
           <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
           <li><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
           <li>
             <a class="nav-link" href="{% url 'courses' %}">COURSES</a>
           </li>
           <li><a class="nav-link" href="CONTACT">CONTACT</a></li>
-          <li>
-            <a class="nav-link" href="{% url 'dashboard' %}">DASHBOARD</a>
-          </li>
+     
         </ul>
       </nav>
+      {% endif %}
       <div class="button-container">
-        <a class="login animated-button login-header" href="{% url 'login' %}">
-          <span>Login</span>
-        </a>
+
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+              {% csrf_token %}
+
+              {% if user.is_authenticated %}
+
+            <button type="submit" class="login animated-button login-header">
+              <span>Logout</span>
+            </button>
+          </form>
+          {% else %}
+
+          <a class="login animated-button login-header" href="{% url 'login' %}">
+            <span>Login</span>
+            {% endif %}
+
+          </a>
       </div>
+
     </header>
     <main class="main">
       <section class="bg-section">
@@ -47,7 +65,7 @@
           <div class="text-wrapper">
             <div class="text-sub-wrapper">
               <p class="text-p">GET STARTED WITH ONLINE COURSES</p>
-              <h1 class="head-l">BEST ONLINELEARNING SYSTEM</h1>
+              <h1 class="head-l">BEST ONLINE<br>LEARNING SYSTEM</h1>
               <p class="description">
                 An elearning website can significantly enhance your online
                 learning experience by providing an entry point to any LMS.
