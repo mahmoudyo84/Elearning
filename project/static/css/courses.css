@@ -297,12 +297,7 @@ path {
 
 }
 .courses-wrapper {
-  width: 75%;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  padding-block: 45px;
-  gap: 30px;
+  width: 100%;
 }
 
 video{
@@ -313,54 +308,22 @@ video{
 
 /* Create a diagonal layout */
 .category {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-/* .course-card {
-  width: 700px; /* Adjust width of cards
-  margin: 20px;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transform: rotate(0deg); /* Rotate cards for the Z layout 
-  transition: transform 0.3s ease-in-out;
-} */
-
-.course-card {
-  width: 100%; /* Adjust width of cards */
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transform: rotate(0deg); /* Rotate cards for the Z layout */
-  transition: transform 0.3s ease-in-out;
-  margin-bottom: 20px;
-}
-
-.courses-list{
-  /* display: grid;
-  grid-template-columns: repeat(1,1fr);  */
-  gap: 25px;
-  width: 100%;
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 20px;
 
 }
-/* Add hover effect to rotate the cards back to a regular position */
-.course-card:hover {
-  transform: rotate(0deg); /* Reset rotation on hover */
+
+.course-card{
+  background: gray;
+  border-radius: 20px;
+  margin-top: 20px;
 }
 
-/* Optional: Set a background color for the sections
-.bg-section {
-  background-color: #f7f7f7;
-  padding: 50px 0;
-  text-align: center;
-} */
+
+
+
+
 
 /* Media query for smaller screens to make the cards more responsive */
 @media (max-width: 768px) {

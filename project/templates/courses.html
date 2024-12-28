@@ -19,31 +19,28 @@
       </div>
       <nav class="nav-container">
         <ul class="list-wrapper">
-          {% if user.is_authenticated %} {% csrf_token %}
-
+          {% if user.is_authenticated %}
           <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
           <li><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
-          <li>
-            <a class="nav-link" href="{% url 'courses' %}">COURSES</a>
-          </li>
-          <li><a class="nav-link" href="{% url 'quiz' %}">QUIZ</a></li>
+          <li><a class="nav-link" href="{% url 'courses' %}">COURSES</a></li>
+          <!-- <li><a class="nav-link" href="{% url 'quiz' %}">QUIZ</a></li> -->
+          {% endif %}
         </ul>
       </nav>
-      {% endif %}
       <div class="button-container">
+        {% if user.is_authenticated %}
         <form action="{% url 'logout' %}" method="post" style="display: inline">
-          {% csrf_token %} {% if user.is_authenticated %}
+          {% csrf_token %}
           <a class="prof" href="{% url 'profile' %}"></a>
           <button type="submit" class="login animated-button login-header">
             <span>Logout</span>
           </button>
         </form>
         {% else %}
-
         <a class="login animated-button login-header" href="{% url 'login' %}">
           <span>Login</span>
-          {% endif %}
         </a>
+        {% endif %}
       </div>
     </header>
 
@@ -57,14 +54,12 @@
 
       <section class="courses-container">
         <div class="courses-wrapper">
-          {% for category in courses_data %}
           <div class="category">
-            <h2>{{ category.category.CategoryName }}</h2>
-            <div class="courses-list">
-              {% for course_data in category.courses %}
-              <div class="course-card">
+            {% for category in courses_data %}
+            {% for course_data in category.courses %}
+            <div class="course-card">
+                <h2>{{ category.category.CategoryName }}</h2>
                 <h3>{{ course_data.course.CourseName }}</h3>
-
                 <div class="course-details">
                   {% for detail in course_data.details %}
                   <div class="course-detail">
@@ -72,41 +67,29 @@
                     <p>{{ detail.Description }}</p>
                     <p>Duration: {{ detail.Duration }} hours</p>
                     <div class="media">
-                      {% for media in course_data.media %} {% if media.DetailID
-                      == detail %}
-                      <div class="media-file">
-                        {% if '.jpg' in media.MediaFile.name or '.png' in
-                        media.MediaFile.name %}
-                        <img
-                          src="{{ media.MediaFile.url }}"
-                          alt="{{ media.MediaFile.name }}"
-                          class="media-image"
-                        />
-                        {% elif '.mp4' in media.MediaFile.name %}
-                        <video controls>
-                          <source
-                            src="{{ media.MediaFile.url }}"
-                            type="video/mp4"
-                          />
-                          Your browser does not support the video tag.
-                        </video>
-                        {% elif '.webm' in media.MediaFile.name %}
-                        <video controls>
-                          <source
-                            src="{{ media.MediaFile.url }}"
-                            type="video/webm"
-                          />
-                          Your browser does not support the video tag.
-                        </video>
-                        {% endif %}
-                        <p>
-                          <a href="{{ media.MediaFile.url }}" target="_blank"
-                            >Download</a
-                          >
-                        </p>
-                      </div>
-                      {% endif %} {% endfor %}
-                    </div>
+                      {% for media in course_data.media %}
+                          <div class="media-file">
+                            {% with media.MediaFile.name|lower as media_name %}
+                              {% if media_name|slice:"-4:" == ".mp4" %}
+                                <video controls>
+                                  <source
+                                    src="{{ media.MediaFile.url }}"
+                                    type="video/mp4"
+                                  />
+                                  Your browser does not support the video tag.
+                                </video>
+                              {% elif media_name|slice:"-5:" == ".webm" %}
+                                <video controls>
+                                  <source
+                                    src="{{ media.MediaFile.url }}"
+                                    type="video/webm"
+                                  />
+                                  Your browser does not support the video tag.
+                                </video>
+                              {% endif %}
+                            {% endwith %}
+                          </div>
+                      {% endfor %}
                   </div>
                   {% endfor %}
                 </div>
@@ -151,23 +134,6 @@
           </div>
           <div class="link-footer">
             <div class="a">
-              <<<<<<< HEAD =======
-              <!-- <<<<<<< HEAD
-              <a href="#">About Us</a>
-              <a href="#">What We Do</a>
-              <a href="#">FAQ</a>
-            </div>
-            <div class="a">
-              <a href="#">Career</a>
-              <a href="#">Blog</a>
-              <a href="#">Contact Us</a>
-            </div>
-            <div class="a">
-              <a href="#">Services</a>
-              <a href="#">Industries</a>
-              <a href="#">Offices</a>
-======= -->
-              >>>>>>> QuizViews
               <p>About Us</p>
               <p>What We Do</p>
               <p>FAQ</p>
@@ -181,9 +147,6 @@
               <p>Services</p>
               <p>Industries</p>
               <p>Offices</p>
-              <<<<<<< HEAD =======
-              <!-- >>>>>>> origin/design-fix -->
-              >>>>>>> QuizViews
             </div>
           </div>
         </div>
