@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Preview (1).png' %}">
     <link rel="stylesheet" href="{% static 'css/quiz.css' %}" />
     <title>Quiz - BrightMind</title>
   </head>
@@ -24,8 +25,10 @@
     <main>
       <div class="sec-quiz">
         <div class="quiz-headline">
-          <div class="end-button">
-            <a href="{% url 'index' %}">End Exam</a>
+          <div class="button-container">
+            <button class="login animated-button">
+              <a style="color:#03915b;text-decoration: none;" href="{% url 'index' %}">End Quiz</a>
+            </button>
           </div>
         </div>
         <div class="wts">
@@ -235,25 +238,20 @@
           >
             <span>Previous</span>
           </a>
-          {% else %}
+        {% else %}
           <a class="login animated-button" href="#">
             <span>Previous</span>
           </a>
-          {% endif %} {% if question_index < question_count|add:-1 %}
-          <a
-            class="login animated-button"
-            href="{% url 'quiz' exam.ExamID question_index|add:1 %}"
-          >
-            <span>Next</span>
-          </a>
-          {% else %}
-          <a
-            class="login animated-button"
-            href="{% url 'quiz_view' exam.ExamID %}"
-          >
-            <span>Finish</span>
-          </a>
-          {% endif %}
+        {% endif %}
+         {% if question_index < question_count|add:-1 %}
+  <a class="login animated-button" href="{% url 'quiz' exam.ExamID question_index|add:1 %}">
+    <span>Next</span>
+  </a>
+{% else %}
+  <a class="login animated-button" href="{% url 'quiz_finish' exam.ExamID %}">
+    <span>Finish</span>
+  </a>
+{% endif %}
         </div>
       </section> -->
     </main>

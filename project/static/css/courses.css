@@ -320,8 +320,8 @@ gap: 20px;
   border-radius: 20px;
   margin-top: 20px;
   padding: 15px;
-  background-color: rgba(148, 148, 148, 0.308);
-  max-height: 400px;;
+  /* background-color: #03915b ; */
+  box-shadow:0 0 10 10 black;
 }
 
 

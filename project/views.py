@@ -9,7 +9,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.hashers import check_password
 from django.views.decorators.csrf import csrf_exempt
 from .models import Users
-from .models import Categories, Courses, CourseDetails, CourseMedia
+from .models import Categories, Courses, CourseDetails, CourseMedia,UserCourses
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from .models import CoursesExams, ExamsQuestions, QuestionsChoices, ExamAnswer, UsersExams
@@ -124,7 +124,7 @@ def about_view(request):
 
 
 #courses view 
-
+@login_required
 def courses_view(request):
     # Retrieve all categories, courses, course details, and course media
     categories = Categories.objects.all()
@@ -268,8 +268,9 @@ def review_quiz(request, exam_id):
     context = {
         "exam": exam,
         "questions": question_data,
-        "question_index": question_index,
-        "question_count": question_count,
+        "choices": choices,
+        # "question_index": question_index,
+        # "question_count": question_count,
     }
     
     return render(request, "review_quiz.html", context)
@@ -338,3 +339,52 @@ def review_quiz(request, exam_id):
 
     return render(request, "review_quiz.html", context)
 
+
+
+
+# @login_required
+def profile_view(request):
+    user = get_object_or_404(Users, Username=request.user.Username)
+    context = {
+        'user': user,
+    }
+    return render(request, 'Profile.html', context)
+
+def enrollment_view(request, username):
+    # Fetch the user by username
+    user = get_object_or_404(Users, Username=username)
+
+    # Get all enrollments for the user with related courses
+    enrollments = (
+        UserCourses.objects.filter(UserID=user.UserID)
+        .select_related("CourseID")
+        .prefetch_related("CourseID__coursedetails_set__coursemedia_set")  # Adjust field names if needed
+    )
+
+    # Prepare detailed data for the enrollments
+    enrollment_data = []
+    for enrollment in enrollments:
+        course = enrollment.CourseID
+        course_details = course.coursedetails_set.all()  # Adjust field name if different
+
+        details_with_media = [
+            {
+                "detail": detail,
+                "media_files": detail.coursemedia_set.all(),  # Adjust field name if different
+            }
+            for detail in course_details
+        ]
+
+        enrollment_data.append({
+            "course": course,
+            "details": details_with_media,
+            "register_date": enrollment.RegisterDate,
+        })
+
+    # Context for the template
+    context = {
+        "user": user,
+        "enrollment_data": enrollment_data,
+    }
+
+    return render(request, "enrollment.html", context)

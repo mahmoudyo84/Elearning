@@ -17,7 +17,7 @@
               <img src="{% static 'images/profile.jpeg' %}" alt="" />
             </div>
             <div class="profile-headline">
-              <h3>Basem Elsawy</h3>
+              <h3>{{user.Name}}</h3>
               <p>Class A</p>
             </div>
           </div>
@@ -28,7 +28,7 @@
                 <i class="fa-solid fa-user"></i>
               </li>
               <li>
-                <a href="{% url 'enrollment' %}">Enrolled Courses</a>
+                <a href="{% url 'enrolled' username=user.Username %}">Enrolled Courses</a>
                 <i class="fa-solid fa-book"></i>
               </li>
               <li>
@@ -63,13 +63,13 @@
             <form action="" id="form">
               <div class="input-container">
                 <div class="input">
-                  <label for="username">Username</label>
+                  <label for="username">{{ user.Username }}</label>
                   <input
                     disabled
                     class="inputs"
                     type="text"
                     id="username"
-                    value="basemElsawy12"
+                    value={{ user.Username }}
                   />
                 </div>
                 <div class="edit-btn">
@@ -85,7 +85,7 @@
                     class="inputs"
                     type="text"
                     id="email"
-                    value="basemElsawy25@outlook.com"
+                    value={{user.Email}}
                   />
                 </div>
                 <div class="edit-btn">
@@ -101,7 +101,7 @@
                     class="inputs"
                     type="text"
                     id="name"
-                    value="basem ashraf mohamed"
+                    value={{user.Name}}
                   />
                 </div>
                 <div class="edit-btn">
@@ -117,7 +117,7 @@
                     class="inputs"
                     type="text"
                     id="phone"
-                    value="01066203541"
+                    value={{user.Mobile}}
                   />
                 </div>
                 <div class="edit-btn">
