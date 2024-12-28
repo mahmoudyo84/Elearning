@@ -34,7 +34,7 @@
             {% for choice in question.choices.all %}
             <div class="option">
               <label for="choice-{{ forloop.counter }}">
-                {{ forloop.counter|add:64|stringformat:"c" }}. {{ choice.text }}
+                {{ forloop.counter|add:64|stringformat:"c" }}. {{ choices.text }}
               </label>
               <input type="radio" id="choice-{{ forloop.counter }}" name="question-{{ question.id }}" />
             </div>
