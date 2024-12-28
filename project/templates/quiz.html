@@ -46,20 +46,20 @@
           <a class="login animated-button" href="{% url 'quiz' exam.ExamID question_index|add:-1 %}">
             <span>Previous</span>
           </a>
-          {% else %}
+        {% else %}
           <a class="login animated-button" href="#">
             <span>Previous</span>
           </a>
-          {% endif %}
-          {% if question_index < question_count|add:-1 %}
-          <a class="login animated-button" href="{% url 'quiz' exam.ExamID question_index|add:1 %}">
-            <span>Next</span>
-          </a>
-          {% else %}
-          <a class="login animated-button" href="{% url 'quiz_view' exam.ExamID %}">
-            <span>Finish</span>
-          </a>
-          {% endif %}
+        {% endif %}
+         {% if question_index < question_count|add:-1 %}
+  <a class="login animated-button" href="{% url 'quiz' exam.ExamID question_index|add:1 %}">
+    <span>Next</span>
+  </a>
+{% else %}
+  <a class="login animated-button" href="{% url 'quiz_finish' exam.ExamID %}">
+    <span>Finish</span>
+  </a>
+{% endif %}
         </div>
       </section>
     </main>

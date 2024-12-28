@@ -15,16 +15,37 @@
       </div>
       <nav class="nav-container">
         <ul class="list-wrapper">
+          {% if user.is_authenticated %}
+          {% csrf_token %}
+
           <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
           <li><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
-          <li><a class="nav-link" href="{% url 'courses' %}">COURSES</a></li>
-          <li><a class="nav-link" href="{% url 'quiz' %}">QUIZ</a></li>
+          <li>
+            <a class="nav-link" href="{% url 'courses' %}">COURSES</a>
+          </li>
+          <li><a class="nav-link" href="CONTACT">CONTACT</a></li>
+     
         </ul>
-      </nav>      
+      </nav>
+      {% endif %}
       <div class="button-container">
-        <a class="login animated-button login-header" href="{% url 'login' %}">
-          <span>Login</span>
-        </a>
+
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+              {% csrf_token %}
+
+              {% if user.is_authenticated %}
+
+            <button type="submit" class="login animated-button login-header">
+              <span>Logout</span>
+            </button>
+          </form>
+          {% else %}
+
+          <a class="login animated-button login-header" href="{% url 'login' %}">
+            <span>Login</span>
+            {% endif %}
+
+          </a>
       </div>
     </header>
     <main>

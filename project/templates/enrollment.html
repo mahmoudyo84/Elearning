@@ -17,7 +17,7 @@
               <img src="{% static 'images/profile.jpeg' %}" alt="" />
             </div>
             <div class="profile-headline">
-              <h3>Basem Elsawy</h3>
+              <h3>{{ user.Name }}</h3>
               <p>Class A</p>
             </div>
           </div>
@@ -28,8 +28,7 @@
                 <i class="fa-solid fa-user"></i>
               </li>
               <li class="active">
-                <a href="{% url 'enrollment' %}">Enrolled Courses</a>
-                <i class="fa-solid fa-book"></i>
+                <a href="{% url 'enrolled' username=user.Username %}">Enrolled Courses</a>                <i class="fa-solid fa-book"></i>
               </li>
               <li>
                 <a href="{% url 'quizes' %}">Exams</a>
@@ -73,7 +72,7 @@
                 </div>
                 <div class="course-text">
                   <div class="course-headline">
-                    <h5>Physics 101</h5>
+                    <h5>{{ enrollment.course.CourseName }}</h5>
                     <p>Duration 04:35:55</p>
                     <p>Lessons 12</p>
                     <p>Finished 4</p>
