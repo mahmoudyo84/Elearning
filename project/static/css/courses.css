@@ -308,18 +308,21 @@ video{
 
 /* Create a diagonal layout */
 .category {
-display: grid;
-grid-template-columns: repeat(2,1fr);
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
 gap: 20px;
-
 }
 
 .course-card{
-  background: gray;
+  width: 400px;
   border-radius: 20px;
   margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(148, 148, 148, 0.308);
+  max-height: 400px;;
 }
-
 
 
 
