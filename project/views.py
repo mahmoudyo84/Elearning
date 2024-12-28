@@ -168,18 +168,15 @@ def quiz_view(request, exam_id, question_index):
     exam = get_object_or_404(CoursesExams, pk=exam_id)
 
     # Check the exam.id to make sure it's being fetched correctly
-    print("Exam ID:", exam )
-
-         
+    print("Exam ID:",  exam.Duration )
+  
 
     # Fetch all questions for the exam
     questions = ExamsQuestions.objects.filter(ExamID=exam)
 
     choices = QuestionsChoices.objects.filter(QuestionID_id=question_index) 
     
-    for choice in choices:
-        print(choice)
-
+ 
     # Calculate total question count
     question_count = questions.count()
 

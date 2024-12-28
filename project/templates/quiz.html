@@ -22,7 +22,190 @@
       </nav>
     </header> -->
     <main>
-      <section class="quiz-section">
+      <div class="sec-quiz">
+        <div class="quiz-headline">
+          <div class="end-button">
+            <a href="{% url 'index' %}">End Exam</a>
+          </div>
+        </div>
+        <div class="wts">
+          <div>
+            <p style="color: rgb(156, 154, 154); font-size: 14px">{{ exam }}</p>
+            <p style="color: rgb(156, 154, 154); font-size: 16px">
+              Question {{ question_index|add:1 }} of {{ question_count }}
+            </p>
+            <div
+              style="color: rgb(156, 154, 154); font-size: 16px"
+              class="exam-duration"
+            >
+              Duration {{exam.Duration}}
+            </div>
+
+            <p style="font-weight: bold; margin: 10px 0 30px">
+              {{ question.Question }}
+            </p>
+          </div>
+          <hr />
+          <div>
+            {% for choice in choices %}
+
+            <div class="option">
+              <label for="choice-{{ forloop.counter }}"> {{ choice }} </label>
+              <input
+                type="radio"
+                id="choice-{{ forloop.counter }}"
+                name="question-{{ question.id }}"
+              />
+            </div>
+            {% endfor %}
+            <!-- <div class="option">
+                <label for="first-choose">(A). Lives</label>
+                <input type="radio" name="ra" id="first-choose" />
+              </div> -->
+            <!-- <div class="option">
+                <label for="sec-choose">(B). Goges</label>
+                <input type="radio" name="ra" id="sec-choose" />
+              </div>
+              <div class="option">
+                <label for="third-choose">(C). Arrives</label>
+                <input type="radio" name="ra" id="third-choose" />
+              </div>
+              <div class="option">
+                <label for="forth-choose">(D). Helps</label>
+                <input type="radio" name="ra" id="forth-choose" />
+              </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-footer">
+        {% if question_index > 0 %}
+        <a
+          href="{% url 'quiz' exam.ExamID question_index|add:-1 %}"
+          class="prev pagination-btns"
+        >
+          <div class="icon">
+            <svg
+              style="rotate: 180deg; width: 20px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="#000000"
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+              />
+            </svg>
+          </div>
+          <div class="page-btn-text">
+            <p>prev</p>
+          </div>
+        </a>
+        {% else %}
+        <a class="prev pagination-btns">
+          <div class="icon">
+            <svg
+              style="rotate: 180deg; width: 20px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="#000000"
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+              />
+            </svg>
+          </div>
+          <div class="page-btn-text">
+            <p>prev</p>
+          </div>
+        </a>
+        {% endif %}
+        <div>{{ question_index|add:1 }} of {{ question_count }}</div>
+        {% if question_index < question_count|add:-1 %}
+        <a
+          href="{% url 'quiz' exam.ExamID question_index|add:1 %}"
+          class="next pagination-btns"
+        >
+          <div class="page-btn-text">
+            <p>next</p>
+          </div>
+          <div class="icon">
+            <svg
+              style="width: 20px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="#000000"
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+              />
+            </svg>
+          </div>
+        </a>
+
+        {% else %}
+        <a class="next pagination-btns">
+          <div class="page-btn-text">
+            <p>next</p>
+          </div>
+          <div class="icon">
+            <svg
+              style="width: 20px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="#000000"
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+              />
+            </svg>
+          </div>
+        </a>
+        {% endif %}
+      </div>
+      <!-- 
+      <div class="btns">
+        <div class="button-container">
+          <div class="login animated-button login-header flexAbility">
+            <div class="arrow ll">
+              <svg
+                style="rotate: 180deg"
+                class="svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="#000000"
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                />
+              </svg>
+            </div>
+            <span>Previous</span>
+          </div>
+        </div>
+        <div class="button-container">
+          <div class="login animated-button login-header flexAbility">
+            <span>Next</span>
+            <div class="arrow rr">
+              <svg
+                class="svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="#000000"
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="button-container pos">
+            <button class="login animated-button login-header flexAbility">
+              <span>Finish</span>
+            </button>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <section class="quiz-section">
         <div class="quiz-header">
           <h2>Quiz: {{ exam.Title }}</h2>
           <p>{{ exam.Description }}</p>
@@ -72,80 +255,7 @@
           </a>
           {% endif %}
         </div>
-      </section>
+      </section> -->
     </main>
-    <footer>
-      <p>&copy; 2024 BrightMind. All rights reserved.</p>
-    </footer>
   </body>
 </html>
-        <!-- <div class="sec-quiz">
-          <div class="wts">
-            <div>
-              <p style="color: rgb(156, 154, 154)">Question 1</p>
-              <p style="font-weight: bold; margin: 10px 0 30px">
-                She ________ in Florida but prefers California.
-              </p>
-            </div>
-            <hr />
-            <div>
-              <div class="option">
-                <label for="first-choose">(A). Lives</label>
-                <input type="radio" name="ra" id="first-choose" />
-              </div>
-              <div class="option">
-                <label for="sec-choose">(B). Goges</label>
-                <input type="radio" name="ra" id="sec-choose" />
-              </div>
-              <div class="option">
-                <label for="third-choose">(C). Arrives</label>
-                <input type="radio" name="ra" id="third-choose" />
-              </div>
-              <div class="option">
-                <label for="forth-choose">(D). Helps</label>
-                <input type="radio" name="ra" id="forth-choose" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="btns">
-          <div class="button-container">
-            <div class="login animated-button login-header flexAbility">
-              <div class="arrow ll">
-                <svg
-                  style="rotate: 180deg"
-                  class="svg"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
-                >
-                  <path
-                    fill="#000000"
-                    d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                  />
-                </svg>
-              </div>
-              <span>Previous</span>
-            </div>
-          </div>
-          <div class="button-container">
-            <div class="login animated-button login-header flexAbility">
-              <span>Next</span>
-              <div class="arrow rr">
-                <svg
-                  class="svg"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
-                >
-                  <path
-                    fill="#000000"
-                    d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="button-container pos">
-              <button class="login animated-button login-header flexAbility">
-                <span>Finish</span>
-              </button>
-            </div>
-          </div>
