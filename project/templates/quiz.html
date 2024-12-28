@@ -4,14 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
-    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="{% static 'images/Preview (1).png' %}"
-    />
-    <title>BrightMind</title>
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}" />
+    <title>Quiz - BrightMind</title>
   </head>
   <body>
     <header class="header-container" id="header">
@@ -20,73 +14,61 @@
       </div>
       <nav class="nav-container">
         <ul class="list-wrapper">
-          {% if user.is_authenticated %} {% csrf_token %}
-          <li><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
-          <li><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
-          <li>
-            <a class="nav-link" href="{% url 'courses' %}">COURSES</a>
-          </li>
-          <li><a class="nav-link" href="{% url 'quiz' %}">QUIZ</a></li>
+          <li><a href="{% url 'index' %}">HOME</a></li>
+          <li><a href="{% url 'about' %}">ABOUT</a></li>
+          <li><a href="{% url 'courses' %}">COURSES</a></li>
+          <li><a href="{% url 'quiz' exam.ExamID question_index %}">QUIZ</a></li>
         </ul>
       </nav>
-      {% endif %}
-      <div class="button-container">
-        <form action="{% url 'logout' %}" method="post" style="display: inline">
-          {% csrf_token %} {% if user.is_authenticated %}
-          <a class="prof" href="{% url 'profile' %}"></a>
-          <button type="submit" class="login animated-button login-header">
-            <span>Logout</span>
-          </button>
-        </form>
-        {% else %}
-
-        <a class="login animated-button login-header" href="{% url 'login' %}">
-          <span>Login</span>
-          {% endif %}
-        </a>
-      </div>
     </header>
     <main>
-      <section class="bg-section">
-        <div class="bg-text">
-          <h2>Quiz</h2>
-          <p>Practice your skills with us on the quiz page.</p>
-        </div>
-      </section>
       <section class="quiz-section">
         <div class="quiz-header">
-          <div>
-            <h4>MCT MOCK Tests</h4>
-            <p style="color: rgb(156, 154, 154)">session 1</p>
-          </div>
-          <div class="bar"><div class="bar-background"></div></div>
-          <div class="two-btn">
-            <div class="button-container">
-              <button class="login animated-button login-header">
-                <span>Review</span>
-              </button>
+          <h2>Quiz: {{ exam.Title }}</h2>
+          <p>{{ exam.Description }}</p>
+          <p>Question {{ question_index|add:1 }} of {{ question_count }}</p>
+        </div>
+        <div class="question-container">
+          <h3>{{ question.Question }}</h3>
+          <div class="options">
+            {% for choice in question.choices.all %}
+            <div class="option">
+              <label for="choice-{{ forloop.counter }}">
+                {{ forloop.counter|add:64|stringformat:"c" }}. {{ choices.text }}
+              </label>
+              <input type="radio" id="choice-{{ forloop.counter }}" name="question-{{ question.id }}" />
             </div>
-            <div class="button-container">
-              <button class="login animated-button login-header">
-                <span>Mark as review</span>
-              </button>
-            </div>
-          </div>
-          <div class="two-btn">
-            <svg
-              class="svg"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-            >
-              <path
-                fill="#000000"
-                d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"
-              />
-            </svg>
-            <p>00:00 Min</p>
+            {% endfor %}
           </div>
         </div>
-        <div class="sec-quiz">
+        <div class="navigation-buttons">
+          {% if question_index > 0 %}
+          <a class="login animated-button" href="{% url 'quiz' exam.ExamID question_index|add:-1 %}">
+            <span>Previous</span>
+          </a>
+          {% else %}
+          <a class="login animated-button" href="#">
+            <span>Previous</span>
+          </a>
+          {% endif %}
+          {% if question_index < question_count|add:-1 %}
+          <a class="login animated-button" href="{% url 'quiz' exam.ExamID question_index|add:1 %}">
+            <span>Next</span>
+          </a>
+          {% else %}
+          <a class="login animated-button" href="{% url 'quiz_view' exam.ExamID %}">
+            <span>Finish</span>
+          </a>
+          {% endif %}
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 BrightMind. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
+        <!-- <div class="sec-quiz">
           <div class="wts">
             <div>
               <p style="color: rgb(156, 154, 154)">Question 1</p>
@@ -156,62 +138,3 @@
               </button>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <div class="cont-footer">
-        <div class="logo-container">
-          <h1>BRIGHT<span>MIND</span></h1>
-        </div>
-        <div class="control">
-          <div class="first-column">
-            <div class="flex">
-              <div class="svg">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                  <path
-                    fill="#ffffff"
-                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"
-                  />
-                </svg>
-              </div>
-              <p class="Lorem">+1-543-123-4567</p>
-            </div>
-            <div class="flex">
-              <div class="svg">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                  <path
-                    fill="#ffffff"
-                    d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"
-                  />
-                </svg>
-              </div>
-              <p class="Lorem">example@BrightMind.com</p>
-            </div>
-          </div>
-          <div class="link-footer">
-            <div class="a">
-              <p>About Us</p>
-              <p>What We Do</p>
-              <p>FAQ</p>
-            </div>
-            <div class="a">
-              <p>Career</p>
-              <p>Blog</p>
-              <p>Contact Us</p>
-            </div>
-            <div class="a">
-              <p>Services</p>
-              <p>Industries</p>
-              <p>Offices</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="last">
-        &copy; Copyright 2024 BrightMind. All rights reserved.
-      </div>
-    </footer>
-    <script src="{% static 'js/quiz.js' %}" defer></script>
-  </body>
-</html>

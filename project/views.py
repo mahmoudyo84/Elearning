@@ -10,6 +10,11 @@ from django.contrib.auth.hashers import check_password
 from django.views.decorators.csrf import csrf_exempt
 from .models import Users
 from .models import Categories, Courses, CourseDetails, CourseMedia
+from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
+from .models import CoursesExams, ExamsQuestions, QuestionsChoices, ExamAnswer, UsersExams
+from django.http import HttpResponseNotFound
+
 
 
 
@@ -144,8 +149,8 @@ def courses_view(request):
 
     return render(request, 'courses.html', {'courses_data': courses_data})
 
-def quiz_view(request):
-    return render(request,"quiz.html")
+# def quiz_view(request):
+#     return render(request,"quiz.html")
 
 
 #Roles_View
@@ -154,4 +159,177 @@ from .services import get_all_roles
 def roles_view(request):
     roles = get_all_roles()
     return render(request, 'roles.html', {'roles': roles})
+
+
+
+@login_required
+def quiz_view(request, exam_id, question_index):
+    # Fetch the exam details
+    exam = get_object_or_404(CoursesExams, pk=exam_id)
+
+    # Check the exam.id to make sure it's being fetched correctly
+    print("Exam ID:", exam.ExamID)
+
+    # Fetch all questions for the exam
+    questions = ExamsQuestions.objects.filter(ExamID=exam)
+
+    # Calculate total question count
+    question_count = questions.count()
+
+    # Get the specific question based on the question index
+    if 0 <= question_index < question_count:
+        question = questions[question_index]
+    else:
+        # Handle invalid question index
+        return HttpResponseNotFound("Invalid question index.")
+
+    context = {
+        "exam": exam,
+        "question": question,
+        "question_index": question_index,
+        "question_count": question_count,
+    }
+
+    return render(request, "quiz.html", context)
+
+def submit_quiz(request):
+    if request.method == "POST":
+        user = request.user
+        exam_id = request.POST.get("exam_id")
+        answers = request.POST.getlist("answers")  # List of selected choice IDs
+
+        exam = get_object_or_404(CoursesExams, pk=exam_id)
+        score = 0
+        total_points = 0
+
+        for choice_id in answers:
+            choice = get_object_or_404(QuestionsChoices, pk=choice_id)
+            question = choice.QuestionID
+
+            # Record the answer
+            ExamAnswer.objects.create(
+                ExamID=exam,
+                QuestionID=question,
+                ChoiceID=choice,
+                UserID=user,
+                Right=choice.Right,
+            )
+
+            # Calculate score
+            if choice.Right:
+                score += question.Point
+
+            total_points += question.Point
+
+        # Save the user's total score
+        UsersExams.objects.update_or_create(
+            UserID=user, ExamID=exam, defaults={"Degree": score}
+        )
+
+        return JsonResponse({"score": score, "total_points": total_points})
+
+    return JsonResponse({"error": "Invalid request method"}, status=400)
+
+
+def quiz_redirect_view(request):
+    # Redirect to a default exam or handle gracefully
+    return redirect('quiz', exam_id=1)
+
+def review_quiz(request, exam_id):
+    # Get the exam details
+    if exam_id is None:
+        exam_id = 1 
+    exam = get_object_or_404(CoursesExams, pk=exam_id)
+    
+    # Fetch all questions for the exam
+    questions = ExamsQuestions.objects.filter(ExamID=exam).select_related('ExamID')
+
+    question_data = []
+    for question in questions:
+        # Fetch the choices for each question
+        choices = QuestionsChoices.objects.filter(QuestionID=question)
+        
+        # Get user's answer (Assuming you have a model UserAnswers to store them)
+        user_answer = ExamAnswer.objects.filter(QuestionID=question, UserID=request.user).first()
+        
+        # Prepare the question and answer data
+        question_data.append({
+            "id": question.QuestionID,
+            "question": question.Question,
+            "choices": [{"id": choice.ChoiceID, "text": choice.Choice} for choice in choices],
+            "user_answer": user_answer.ChoiceID if user_answer else None
+        })
+
+    context = {
+        "exam": exam,
+        "questions": question_data,
+        "question_index": question_index,
+        "question_count": question_count,
+    }
+    
+    return render(request, "review_quiz.html", context)
+
+# def mark_review(request, exam_id):
+#     # Get the exam object
+#     exam = get_object_or_404(CoursesExams, pk=exam_id)
+    
+#     # Fetch the question to mark for review
+#     question_id = request.POST.get('question_id')
+#     question = get_object_or_404(ExamsQuestions, pk=question_id, ExamID=exam)
+
+#     # Update or create the UserAnswer with a review flag (assuming you have a 'review' field)
+#     user_answer, created = ExamAnswer.objects.update_or_create(
+#         user=request.user,
+#         question=question,
+#         exam=exam,
+#         defaults={"is_reviewed": True}  # Assuming `is_reviewed` is a Boolean field in UserAnswers
+#     )
+
+#     # Optionally, you can set a flag to mark a question as reviewed.
+#     if not created:
+#         # If the answer already exists, toggle the "review" status
+#         user_answer.is_reviewed = not user_answer.is_reviewed
+#         user_answer.save()
+
+    # Redirect to the quiz review page or next question
+    return redirect('review_quiz', exam_id=exam.id)
+
+
+def previous_question(request, exam_id, question_id):
+    # Get the exam object
+    exam = get_object_or_404(CoursesExams, pk=exam_id)
+    
+    # Get the current question object
+    current_question = get_object_or_404(ExamsQuestions, pk=question_id)
+    
+    # Find the previous question in the exam
+    previous_question = ExamsQuestions.objects.filter(ExamID=exam, id__lt=current_question.id).order_by('-id').first()
+
+    # If there is no previous question, stay on the current question
+    if previous_question is None:
+        return redirect('quiz', exam_id=exam.id)  # Redirect to the quiz page or the first question
+
+    # Render the quiz page with the previous question
+    context = {
+        'exam': exam,
+        'question': previous_question,
+    }
+    return render(request, 'quiz.html', context)
+
+
+def review_quiz(request, exam_id):
+    exam = get_object_or_404(CoursesExams, pk=exam_id)
+    questions = ExamsQuestions.objects.filter(ExamID=exam)
+    
+    # Filter the user answers and find those marked for review
+    user_answers = ExamAnswer.objects.filter(exam=exam, user=request.user)
+    review_questions = [answer.question for answer in user_answers if answer.is_reviewed]
+    
+    context = {
+        'exam': exam,
+        'questions': questions,
+        'review_questions': review_questions,  # Pass the review questions
+    }
+
+    return render(request, "review_quiz.html", context)
 
