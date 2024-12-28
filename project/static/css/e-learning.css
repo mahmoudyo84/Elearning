@@ -316,7 +316,6 @@ footer {
   width: auto;
   margin: auto;
   gap: 40px;
-  cursor: pointer;
 }
 
 .a p:hover {
@@ -343,4 +342,16 @@ footer {
 
 path {
   color: black !important;
+}
+
+.prof{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #1bc67e;
+  background-image: url(../images/profile.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 140px;
 }
