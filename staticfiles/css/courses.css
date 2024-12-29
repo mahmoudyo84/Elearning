@@ -1,0 +1,395 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+
+.header-container {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 20px;
+  padding-block: 10px;
+  transition: 0.3s ease;
+  z-index: 100000000000000000000;
+}
+.logo-container {
+  color: white !important;
+  & span {
+    color: #1bc67e !important;
+  }
+}
+.animateHeader {
+  background-color: white;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+  .logo-container * {
+    color: #1bc67e !important;
+  }
+  & a {
+    color: #1bc67e;
+  }
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .list-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    & li {
+      list-style: none;
+      & a {
+        text-decoration: none;
+        font-weight: bolder;
+      }
+    }
+  }
+}
+.nav-link {
+  color: white;
+  transition: 0.3s ease;
+}
+.nav-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  transform-origin: center;
+  margin-top: 2px;
+  background-color: #1bc67e;
+  transition: 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+.nav-link:hover {
+  color: #1bc67e !important;
+}
+a {
+  text-decoration: none;
+}
+.login {
+  padding: 5px 35px !important;
+  border: 2px solid rgb(18, 209, 129) !important;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login:active {
+  color: black;
+  background-color: rgb(18, 209, 129);
+}
+.animated-button {
+  position: relative;
+  background: none;
+  border: 1px solid #1bc67e;
+  color: #1bc67e;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  transition: color 0.3s ease;
+  & span {
+    color: #1bc67e;
+    transition: 0.3s ease;
+    font-size: 14px;
+  }
+}
+
+.animated-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, #03915b, #0f4e34);
+  z-index: 0;
+  transition: left 0.3s ease, right 0.3s ease;
+}
+
+.animated-button:hover::before {
+  left: 0;
+  right: 0;
+}
+
+.animated-button:hover {
+  & * {
+    color: #fff !important;
+    isolation: isolate;
+  }
+}
+
+.animated-button span {
+  position: relative;
+  z-index: 1;
+}
+.bg-section {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../images/Best\ Data\ Labeling\ Tools\ For\ Machine\ Learning\ in\ 2023.jpg);
+  background-color: #000000bb;
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-text {
+  width: 75%;
+  transform: translateY(50px);
+  margin: auto;
+  & h2 {
+    color: white;
+    font-size: 32px;
+  }
+  & p {
+    text-transform: capitalize;
+    font-size: 16px;
+    color: white;
+    padding-top: 10px;
+  }
+}
+
+.box-container {
+  background-image: url(../images/istockphoto-1931634876-612x612.jpg);
+  height: 250px !important;
+}
+
+.box-container {
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.box-text-container {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+
+  bottom: 10px;
+  left: 10px;
+  & * {
+    font-family: "Poppins";
+    color: white;
+    text-transform: capitalize;
+  }
+}
+.box-text-container h4 {
+  transition: all 0.8s cubic-bezier(0.53, 0.01, 0, 1);
+}
+
+.box-text-container p {
+  position: absolute;
+  width: max-content;
+  opacity: 0;
+  transition: all 0.2s ease;
+  transition-delay: 0.2s;
+}
+.image-cont {
+  /* width: 300px; */
+  /* height: 200px; */
+  width: 100%;
+}
+.box-container:hover {
+  & h4 {
+    transform: translateY(-23px);
+  }
+  & p {
+    opacity: 1;
+  }
+}
+
+footer {
+  background-image: url(../images/Best\ Data\ Labeling\ Tools\ For\ Machine\ Learning\ in\ 2023.jpg);
+  background-color: #000000bb;
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  color: white;
+  padding-block: 25px;
+  padding-inline: 25px;
+}
+
+.cont-footer {
+  width: 98%;
+  margin: auto;
+  /* padding-top: 40px; */
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
+}
+.first-column {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.flex {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.link-footer {
+  display: flex;
+  gap: 60px;
+}
+
+.a {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: auto;
+  gap: 40px;
+}
+
+.a p:hover {
+  color: #1bc67e;
+  cursor: pointer;
+}
+.control {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 90%;
+  margin: auto;
+  gap: 200px;
+  margin-top: 20px;
+}
+.last {
+  width: 85%;
+  margin: auto;
+  text-align: end;
+  padding-bottom: 60px;
+  font-size: 12px;
+  margin-top: 30px;
+}
+
+path {
+  color: black !important;
+}
+
+.courses-container {
+  max-width: 100%;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.courses-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.category {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.course-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 500px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.course-card h3 {
+  font-size: 1.25rem;
+  color: #1bc67e;
+  margin: 0;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.course-details {
+  padding: 1rem;
+}
+
+.course-detail {
+  margin-bottom: 1rem;
+}
+
+.course-detail h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.course-detail p {
+  font-size: 0.875rem;
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.media {
+  margin-top: 1rem;
+}
+
+.media video {
+  width: 100%;
+  border-radius: 6px;
+}
+
+
+
+
+/* Media query for smaller screens to make the cards more responsive */
+@media (max-width: 768px) {
+  .courses-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .course-card {
+    width: 90%; /* Make cards smaller on mobile */
+    margin: 10px 0;
+  }
+}
+
+.prof{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #1bc67e;
+  background-image: url(../images/profile.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 160px;
+}

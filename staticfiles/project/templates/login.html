@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrightMind - Login</title>
+    {% load static %}
+    <script src="{% static 'js/login.js' %}" defer></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/login.css' %}"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'images/Preview (1).png' %}"
+    />
+  </head>
+  <body>
+    <section class="main-container">
+      <a style="text-decoration: none;" href="{% url 'index' %}" class="home-btn">
+        <i class="fa-solid fa-house"></i>
+        <p>Home</p>
+      </a>
+      <div class="res-headline">
+        <div class="logo-text">
+          <p>BRIGHTMIND</p>
+        </div>
+      </div>
+      <div class="side-panel-design">
+        <div class="logo">
+          <div class="logo-text">
+            <p>BRIGHTMIND</p>
+          </div>
+          <div class="line-vert"></div>
+        </div>
+        <div class="bottom-text">
+          <p>
+            <span class="bottom-headline">With us</span><br />
+            <span class="bottom-para">
+              the learning curve is full of passion
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="form-wrapper">
+        <div class="form">
+          <div class="form-header">
+            <h2>Login</h2>
+          </div>
+
+          <!-- Add the POST method to send data to the view -->
+          <form class="form-container" method="POST">
+            {% csrf_token %}
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Enter your username"
+                name="username"
+                type="text"
+                value="{{ form.username.value|default_if_none:'' }}"/> 
+            </div>
+
+            <!-- Password input field -->
+            <div class="input-container">
+              <input
+                class="inputs"
+                placeholder="Enter your password"
+                name="password" 
+                type="password"
+                value=""/>
+            </div>
+
+            <!-- Error message display -->
+            {% if messages %}
+            <div class="messages">
+              {% for message in messages %}
+              <p class="error-message">{{ message }}</p>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Sign in button -->
+            <div class="input-container sign-container">
+              <a class="sign-up-btn" href="{% url 'register' %}">Create a new account</a>
+              {% csrf_token %}
+              <button class="sign-in-btn" type="submit">Sign In</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script src="{% static 'js/login.js' %}" defer></script>
+    <script
+      src="https://kit.fontawesome.com/7031694be7.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

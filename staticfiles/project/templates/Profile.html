@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Preview (1).png' %}">
+    <title>BRIGHTMIND</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+  </head>
+  <body>
+    <main class="main-container">
+      <section class="side-panel identifier">
+        <div class="side-panel-wrapper">
+          <div class="profile-information">
+            <div class="image-container">
+              <img src="{% static 'images/profile.jpeg' %}" alt="" />
+            </div>
+            <div class="profile-headline">
+              <h3>{{user.Name}}</h3>
+              <p>Class A</p>
+            </div>
+          </div>
+          <nav class="side-nav profile-navigation">
+            <ul class="side-nav nav-list">
+              <li class="active">
+                <a href="{% url 'profile' %}">Personal Data</a>
+                <i class="fa-solid fa-user"></i>
+              </li>
+              <li>
+                <a href="{% url 'enrolled' username=user.Username %}">Enrolled Courses</a>
+                <i class="fa-solid fa-book"></i>
+              </li>
+              <li>
+                <a href="{% url 'quizes' %}">Exams</a>
+                <i class="fa-solid fa-paste"></i>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="logo">
+          <img src="{% static 'images/Preview (1).png' %}" alt="" />
+        </div>
+      </section>
+      <section class="main-content content-section">
+        <div class="dashboard-header">
+          <div class="head-wrapper">
+            <!-- <div class="nav-buttons">
+              <i class="fa-solid fa-right-to-bracket"></i>
+              <a href="{% url 'index' %}"> Logout </a>
+            </div> -->
+            <a href="{% url 'index' %}">
+            <div  class="nav-buttons">
+              <svg style="height: 15px;width:15px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="#009356" d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
+              <span>Home</span>
+            </div>
+          </a>
+          </div>
+        </div>
+        <div class="dashboard-body">
+          <div class="dashboard-wrapper">
+            <h2 class="form-headline">Edit Personal Information</h2>
+            <form action="" id="form">
+              <div class="input-container">
+                <div class="input">
+                  <label for="username">{{ user.Username }}</label>
+                  <input
+                    disabled
+                    class="inputs"
+                    type="text"
+                    id="username"
+                    value={{ user.Username }}
+                  />
+                </div>
+                <div class="edit-btn">
+                  <button class="buttons">edit</button>
+                  <button class="submit">submit</button>
+                </div>
+              </div>
+              <div class="input-container">
+                <div class="input">
+                  <label for="email">email</label>
+                  <input
+                    disabled
+                    class="inputs"
+                    type="text"
+                    id="email"
+                    value={{user.Email}}
+                  />
+                </div>
+                <div class="edit-btn">
+                  <button class="buttons">edit</button>
+                  <button class="submit">submit</button>
+                </div>
+              </div>
+              <div class="input-container">
+                <div class="input">
+                  <label for="name">Fullname</label>
+                  <input
+                    disabled
+                    class="inputs"
+                    type="text"
+                    id="name"
+                    value={{user.Name}}
+                  />
+                </div>
+                <div class="edit-btn">
+                  <button class="buttons">edit</button>
+                  <button class="submit">submit</button>
+                </div>
+              </div>
+              <div class="input-container">
+                <div class="input">
+                  <label for="phone">Phone Number</label>
+                  <input
+                    disabled
+                    class="inputs"
+                    type="text"
+                    id="phone"
+                    value={{user.Mobile}}
+                  />
+                </div>
+                <div class="edit-btn">
+                  <button class="buttons">edit</button>
+                  <button class="submit">submit</button>
+                </div>
+              </div>
+              <div class="input-container">
+                <div class="input">
+                  <label for="address">Address</label>
+                  <input
+                    disabled
+                    class="inputs"
+                    type="text"
+                    id="address"
+                    value="maryotya haram"
+                  />
+                </div>
+                <div class="edit-btn">
+                  <button class="buttons">edit</button>
+                  <button class="submit">submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="{% static 'js/profile.js' %}"></script>
+    <script
+      src="https://kit.fontawesome.com/7031694be7.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

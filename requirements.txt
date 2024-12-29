@@ -1,0 +1,12 @@
+asgiref==3.8.1
+betterpath==0.2.2
+click==8.1.8
+Django==5.1.4
+gunicorn==23.0.0
+l==0.11.0
+packaging==24.2
+setuptools==75.6.0
+sqlparse==0.5.3
+vcversioner==2.16.0.0
+whitenoise==6.8.2
+zope.interface==7.2

@@ -27,9 +27,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'project/static/media')  # File system path
 SECRET_KEY = 'django-insecure-d0njbnul5p!dww&stf=c3&s&zdcgua#q35zg&1jv*+ujb7pz6#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
@@ -126,6 +128,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR ,'static']
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # Directory where static files will be collected when running 'collectstatic'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATIC_ROOT = os.path.join(BASE_DIR, 'project/static')

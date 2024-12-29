@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrightMind</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'images/Preview (1).png' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/enrollment.css' %}" />
+  </head>
+  <body>
+    <main class="main-container">
+      <section class="side-panel identifier">
+        <div class="side-panel-wrapper">
+          <div class="profile-information">
+            <div class="image-container">
+              <img src="{% static 'images/profile.jpeg' %}" alt="" />
+            </div>
+            <div class="profile-headline">
+              <h3>{{ user.Name }}</h3>
+              <p>Class A</p>
+            </div>
+          </div>
+          <nav class="side-nav profile-navigation">
+            <ul class="side-nav nav-list">
+              <li class="">
+                <a href="{% url 'profile' %}">Personal Data</a>
+                <i class="fa-solid fa-user"></i>
+              </li>
+              <li class="active">
+                <a href="{% url 'enrolled' username=user.Username %}">Enrolled Courses</a>
+                <i class="fa-solid fa-book"></i>
+              </li>
+              <li>
+                <a href="{% url 'quizes' %}">Exams</a>
+                <i class="fa-solid fa-paste"></i>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="logo">
+          <img src="{% static 'images/Preview (1).png' %}" alt="" />
+        </div>
+      </section>
+      <section class="main-content content-section">
+        <div class="dashboard-header">
+          <div class="head-wrapper">
+            <!-- <div class="nav-buttons">
+              <i class="fa-solid fa-right-to-bracket"></i>
+              <a href="{% url 'index' %}"> Logout </a>
+            </div> -->
+            <a href="{% url 'index' %}">
+              <div class="nav-buttons">
+                <svg
+                  style="height: 15px; width: 15px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 576 512"
+                >
+                  <path
+                    fill="#009356"
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
+                  />
+                </svg>
+                <span>Home</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="dashboard-body">
+          <div class="dashboard-wrapper">
+            <div class="dashboard-headline">
+              <h3>Enrolled Courses</h3>
+            </div>
+            <div class="dashboard-content">
+              <div class="course">
+                <div class="course-image">
+                  <div class="overlay">
+                    <i class="fa-solid fa-play"></i>
+                  </div>
+                  <img
+                    src="{%static 'images/istockphoto-1931634876-612x612.jpg'%}"
+                    alt=""
+                  />
+                </div>
+                <div class="course-text">
+                  <div class="course-headline">
+                    <h5>{{ enrollment.course.CourseName }}</h5>
+                    <p>Duration 04:35:55</p>
+                    <p>Lessons 12</p>
+                    <p>Finished 4</p>
+                  </div>
+                  <div class="course-actions">
+                    <button class="exam-btn course-action" disabled>
+                      Exam 4/12
+                    </button>
+                    <button class="watch-btn course-action">
+                      <span>Watch</span> <i class="fa-solid fa-play"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="course">
+                <div class="course-image">
+                  <div class="overlay">
+                    <i class="fa-solid fa-play"></i>
+                  </div>
+                  <img
+                    src="{%static 'images/istockphoto-1931634876-612x612.jpg'%}"
+                    alt=""
+                  />
+                </div>
+                <div class="course-text">
+                  <div class="course-headline">
+                    <h5>Mathematics 101</h5>
+                    <p>Duration 04:35:55</p>
+                    <p>Lessons 12</p>
+                    <p>Finished 12</p>
+                  </div>
+                  <div class="course-actions">
+                    <button class="exam-btn course-action">Exam 12/12</button>
+                    <button class="watch-btn course-action">
+                      <span>Watch</span> <i class="fa-solid fa-play"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard-footer">
+              <div class="prev pagination-btns">
+                <div class="icon">
+                  <svg
+                    style="width: 20px; rotate: 180deg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                  >
+                    <path
+                      fill="#000000"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                    />
+                  </svg>
+                </div>
+                <div class="page-btn-text">
+                  <p>prev</p>
+                </div>
+              </div>
+              <div>1 of 1</div>
+              <div class="next pagination-btns">
+                <div class="page-btn-text">
+                  <p>next</p>
+                </div>
+                <div class="icon">
+                  <svg
+                    style="width: 20px"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                  >
+                    <path
+                      fill="#000000"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/7031694be7.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
